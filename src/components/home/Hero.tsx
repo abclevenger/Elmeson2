@@ -42,7 +42,8 @@ export default function Hero() {
                 <div className="pt-6 sm:pt-8">
                     <Link
                         href="/menu"
-                        className="inline-block bg-primary hover:bg-secondary text-white font-bold py-4 sm:py-5 px-12 sm:px-10 min-h-[44px] rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg border-2 border-primary hover:border-secondary uppercase tracking-widest text-sm sm:text-base"
+                        className="inline-block bg-primary hover:bg-secondary text-white font-bold py-4 sm:py-5 px-12 sm:px-10 min-h-[44px] rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg border-2 border-primary hover:border-secondary uppercase tracking-widest text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50"
+                        aria-label="View our menu"
                     >
                         View Menu
                     </Link>

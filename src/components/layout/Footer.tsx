@@ -46,21 +46,21 @@ export default function Footer() {
                     </div>
 
                     {/* Quick Links */}
-                    <div className="flex flex-col items-center md:items-start space-y-6">
+                    <nav className="flex flex-col items-center md:items-start space-y-6" aria-label="Footer navigation">
                         <h4 className="text-lg font-bold text-secondary uppercase tracking-widest border-b-2 border-primary/20 pb-1">Navigate</h4>
-                        <div className="flex flex-col space-y-3 text-base text-gray-600 items-center md:items-start">
-                            <Link href="/menu" className="hover:text-primary transition-colors py-1 min-h-[44px] flex items-center">Menu</Link>
-                            <Link href="/story" className="hover:text-primary transition-colors py-1 min-h-[44px] flex items-center">Our Story</Link>
-                            <Link href="/contact" className="hover:text-primary transition-colors py-1 min-h-[44px] flex items-center">Make a Reservation</Link>
-                        </div>
-                    </div>
+                        <ul className="flex flex-col space-y-3 text-base text-gray-600 items-center md:items-start list-none">
+                            <li><Link href="/menu" className="hover:text-primary transition-colors py-1 min-h-[44px] flex items-center">Menu</Link></li>
+                            <li><Link href="/story" className="hover:text-primary transition-colors py-1 min-h-[44px] flex items-center">Our Story</Link></li>
+                            <li><Link href="/contact" className="hover:text-primary transition-colors py-1 min-h-[44px] flex items-center">Make a Reservation</Link></li>
+                        </ul>
+                    </nav>
 
                     {/* Contact Info */}
-                    <div className="flex flex-col items-center md:items-start space-y-6 md:col-span-2 lg:col-span-1">
+                    <address className="flex flex-col items-center md:items-start space-y-6 md:col-span-2 lg:col-span-1 not-italic">
                         <h4 className="text-lg font-bold text-secondary uppercase tracking-widest border-b-2 border-primary/20 pb-1">Visit Us</h4>
                         <div className="space-y-4 text-base text-gray-600 w-full max-w-xs md:max-w-none">
                             <div className="flex items-start space-x-4 justify-center md:justify-start">
-                                <MapPin size={22} className="mt-1 text-primary flex-shrink-0" />
+                                <MapPin size={22} className="mt-1 text-primary flex-shrink-0" aria-hidden="true" />
                                 <span className="text-center md:text-left">410 Wall Street, Mallory Square<br />Key West, FL 33040</span>
                             </div>
                             <div className="flex items-center space-x-4 justify-center md:justify-start">
@@ -76,7 +76,7 @@ export default function Footer() {
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </address>
 
                 </div>
 

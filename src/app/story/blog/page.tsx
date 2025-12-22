@@ -103,8 +103,8 @@ export default function BlogPage() {
                             {/* Content */}
                             <div className="md:w-2/3 p-6 flex flex-col justify-center">
                                 <div className="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                                    <Calendar size={16} />
-                                    <span>{post.date}</span>
+                                    <Calendar size={16} aria-hidden="true" />
+                                    <time dateTime={new Date(post.date).toISOString()}>{post.date}</time>
                                 </div>
                                 <h2 className="text-2xl font-bold text-gray-900 mb-3 hover:text-primary transition-colors">
                                     <Link href={post.slug}>{post.title}</Link>
@@ -115,9 +115,10 @@ export default function BlogPage() {
                                 <Link
                                     href={post.slug}
                                     className="inline-flex items-center space-x-2 text-primary hover:text-secondary font-semibold transition-colors"
+                                    aria-label={`Read more about ${post.title}`}
                                 >
                                     <span>Read More</span>
-                                    <ArrowRight size={18} />
+                                    <ArrowRight size={18} aria-hidden="true" />
                                 </Link>
                             </div>
                         </article>
@@ -125,14 +126,24 @@ export default function BlogPage() {
                 </div>
 
                 {/* Pagination */}
-                <div className="mt-16 flex justify-center space-x-4">
-                    <button className="px-6 py-2 bg-gray-200 text-gray-600 rounded-lg hover:bg-gray-300 transition-colors">
+                <nav aria-label="Blog pagination" className="mt-16 flex justify-center space-x-4">
+                    <button
+                        type="button"
+                        aria-label="Go to previous page"
+                        disabled
+                        aria-disabled="true"
+                        className="px-6 py-2 bg-gray-200 text-gray-600 rounded-lg hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
                         Previous
                     </button>
-                    <button className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition-colors">
+                    <button
+                        type="button"
+                        aria-label="Go to next page"
+                        className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                    >
                         Next
                     </button>
-                </div>
+                </nav>
             </div>
         </div>
         </>

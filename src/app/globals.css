@@ -67,6 +67,7 @@ body {
 *:focus-visible {
   outline: 3px solid var(--primary);
   outline-offset: 2px;
+  outline-color: #D95D1E; /* Ensure sufficient contrast */
 }
 
 /* Optimize focus for touch devices */
@@ -75,6 +76,30 @@ body {
     outline-width: 4px;
     outline-offset: 3px;
   }
+}
+
+/* Ensure sufficient contrast for text on colored backgrounds */
+.bg-primary,
+.bg-secondary {
+  color: white;
+}
+
+/* Improve contrast for gray text on light backgrounds */
+.text-gray-600 {
+  color: #4B5563; /* Darker gray for better contrast */
+}
+
+.text-gray-500 {
+  color: #6B7280; /* Darker gray for better contrast */
+}
+
+/* Ensure links have sufficient contrast */
+a:not(.bg-primary):not(.bg-secondary) {
+  color: #1F2937; /* Dark gray for better contrast */
+}
+
+a:hover:not(.bg-primary):not(.bg-secondary) {
+  color: var(--primary);
 }
 
 /* Accessibility: Skip navigation link */
@@ -93,4 +118,17 @@ body {
 
 .skip-link:focus {
   top: 0;
+}
+
+/* Screen reader only - visually hidden but accessible to assistive technologies */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

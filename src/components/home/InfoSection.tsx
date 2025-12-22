@@ -24,7 +24,8 @@ export default function InfoSection() {
                         <div className="pt-4 md:pt-6">
                             <Link
                                 href="/story"
-                                className="inline-block text-primary hover:text-secondary font-bold uppercase tracking-widest border-b-2 border-primary hover:border-secondary transition-colors pb-1 py-3"
+                                className="inline-block text-primary hover:text-secondary font-bold uppercase tracking-widest border-b-2 border-primary hover:border-secondary transition-colors pb-1 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                                aria-label="Read our restaurant story"
                             >
                                 Read Our Story
                             </Link>

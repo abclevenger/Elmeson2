@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Users, Utensils, Music, Wine, Phone, Mail } from "lucide-react";
 import { BreadcrumbSchema } from "@/lib/schema";
 
@@ -239,12 +240,13 @@ export default function PrivatePartiesPage() {
                         </div>
                     </div>
 
-                    <a
+                    <Link
                         href="/contact"
-                        className="inline-block bg-primary hover:bg-secondary text-white font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg uppercase tracking-widest"
+                        className="inline-block bg-primary hover:bg-secondary text-white font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                        aria-label="Request a quote for your private party"
                     >
                         Request a Quote
-                    </a>
+                    </Link>
                 </div>
             </section>
         </div>

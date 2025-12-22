@@ -58,10 +58,11 @@ export default function MenuPreview() {
                 <div className="text-center mt-12 md:mt-16">
                     <Link
                         href="/menu"
-                        className="inline-flex items-center space-x-2 text-white bg-secondary hover:bg-primary transition-all duration-300 px-8 py-4 rounded-full font-bold uppercase tracking-widest shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[44px]"
+                        className="inline-flex items-center space-x-2 text-white bg-secondary hover:bg-primary transition-all duration-300 px-8 py-4 rounded-full font-bold uppercase tracking-widest shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                        aria-label="View our full menu"
                     >
                         <span>View Full Menu</span>
-                        <ArrowRight size={20} />
+                        <ArrowRight size={20} aria-hidden="true" />
                     </Link>
                 </div>
             </div>

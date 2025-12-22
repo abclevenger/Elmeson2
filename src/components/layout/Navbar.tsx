@@ -27,6 +27,9 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const menuButtonRef = useRef<HTMLButtonElement>(null);
+    const mobileMenuRef = useRef<HTMLDivElement>(null);
+    const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
     const handleMouseEnter = (itemName: string) => {
         if (timeoutRef.current) {
@@ -40,6 +43,126 @@ export default function Navbar() {
             setDropdownOpen(null);
         }, 200); // 200ms delay before closing
     };
+
+    // Keyboard navigation for desktop dropdowns
+    const handleDropdownKeyDown = (e: React.KeyboardEvent, itemName: string, item: typeof NAV_ITEMS[0]) => {
+        if (!item.dropdown) return;
+
+        switch (e.key) {
+            case "Enter":
+            case " ":
+                e.preventDefault();
+                setDropdownOpen(dropdownOpen === itemName ? null : itemName);
+                break;
+            case "Escape":
+                e.preventDefault();
+                setDropdownOpen(null);
+                (e.currentTarget as HTMLElement).focus();
+                break;
+            case "ArrowDown":
+                e.preventDefault();
+                if (dropdownOpen !== itemName) {
+                    setDropdownOpen(itemName);
+                } else {
+                    const firstLink = dropdownRefs.current[itemName]?.querySelector("a") as HTMLElement;
+                    firstLink?.focus();
+                }
+                break;
+        }
+    };
+
+    // Keyboard navigation within dropdown menu
+    const handleDropdownMenuKeyDown = (e: React.KeyboardEvent, itemName: string, index: number) => {
+        const dropdown = NAV_ITEMS.find(item => item.name === itemName)?.dropdown;
+        if (!dropdown) return;
+
+        switch (e.key) {
+            case "Escape":
+                e.preventDefault();
+                setDropdownOpen(null);
+                const button = document.querySelector(`button[aria-expanded="true"]`) as HTMLElement;
+                button?.focus();
+                break;
+            case "ArrowDown":
+                e.preventDefault();
+                const nextIndex = index < dropdown.length - 1 ? index + 1 : 0;
+                const nextLink = dropdownRefs.current[itemName]?.children[nextIndex]?.querySelector("a") as HTMLElement;
+                nextLink?.focus();
+                break;
+            case "ArrowUp":
+                e.preventDefault();
+                const prevIndex = index > 0 ? index - 1 : dropdown.length - 1;
+                const prevLink = dropdownRefs.current[itemName]?.children[prevIndex]?.querySelector("a") as HTMLElement;
+                prevLink?.focus();
+                break;
+            case "Home":
+                e.preventDefault();
+                const firstLink = dropdownRefs.current[itemName]?.children[0]?.querySelector("a") as HTMLElement;
+                firstLink?.focus();
+                break;
+            case "End":
+                e.preventDefault();
+                const lastLink = dropdownRefs.current[itemName]?.children[dropdown.length - 1]?.querySelector("a") as HTMLElement;
+                lastLink?.focus();
+                break;
+        }
+    };
+
+    // Focus trap for mobile menu
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const mobileMenu = mobileMenuRef.current;
+        if (!mobileMenu) return;
+
+        const focusableElements = mobileMenu.querySelectorAll(
+            'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+        const handleTabKey = (e: KeyboardEvent) => {
+            if (e.key !== "Tab") return;
+
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement?.focus();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement?.focus();
+                }
+            }
+        };
+
+        document.addEventListener("keydown", handleTabKey);
+        firstElement?.focus();
+
+        return () => {
+            document.removeEventListener("keydown", handleTabKey);
+        };
+    }, [isOpen]);
+
+    // Return focus to menu button when mobile menu closes
+    useEffect(() => {
+        if (!isOpen && menuButtonRef.current) {
+            menuButtonRef.current.focus();
+        }
+    }, [isOpen]);
+
+    // Close dropdowns on Escape key
+    useEffect(() => {
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setDropdownOpen(null);
+            }
+        };
+
+        document.addEventListener("keydown", handleEscape);
+        return () => document.removeEventListener("keydown", handleEscape);
+    }, []);
 
     useEffect(() => {
         return () => {
@@ -85,18 +208,27 @@ export default function Navbar() {
                                                 className="text-gray-700 hover:text-primary transition-colors duration-200 px-2 py-2 rounded-md text-xs font-medium uppercase tracking-wide flex items-center space-x-1 min-h-[44px] whitespace-nowrap"
                                                 aria-expanded={dropdownOpen === item.name}
                                                 aria-haspopup="true"
+                                                onKeyDown={(e) => handleDropdownKeyDown(e, item.name, item)}
                                             >
                                                 <span>{item.name}</span>
                                                 <ChevronDown size={16} aria-hidden="true" />
                                             </button>
                                             {dropdownOpen === item.name && (
                                                 <div className="absolute left-0 top-full pt-2">
-                                                    <div className="w-64 bg-white border border-gray-200 rounded-lg shadow-lg py-2">
-                                                        {item.dropdown.map((subItem) => (
+                                                    <div
+                                                        ref={(el) => {
+                                                            dropdownRefs.current[item.name] = el;
+                                                        }}
+                                                        className="w-64 bg-white border border-gray-200 rounded-lg shadow-lg py-2"
+                                                        role="menu"
+                                                    >
+                                                        {item.dropdown.map((subItem, index) => (
                                                             <Link
                                                                 key={subItem.name}
                                                                 href={subItem.href}
+                                                                role="menuitem"
                                                                 className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors min-h-[44px] flex items-center"
+                                                                onKeyDown={(e) => handleDropdownMenuKeyDown(e, item.name, index)}
                                                             >
                                                                 {subItem.name}
                                                             </Link>
@@ -131,12 +263,14 @@ export default function Navbar() {
                     {/* Mobile menu button */}
                     <div className="lg:hidden">
                         <button
+                            ref={menuButtonRef}
                             onClick={() => setIsOpen(!isOpen)}
                             className="text-gray-700 hover:text-primary p-3 rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center"
-                            aria-label="Toggle menu"
+                            aria-label={isOpen ? "Close menu" : "Open menu"}
                             aria-expanded={isOpen}
+                            aria-controls="mobile-menu"
                         >
-                            {isOpen ? <X size={26} /> : <Menu size={26} />}
+                            {isOpen ? <X size={26} aria-hidden="true" /> : <Menu size={26} aria-hidden="true" />}
                         </button>
                     </div>
                 </div>
@@ -144,7 +278,14 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="lg:hidden bg-white border-b border-gray-200 h-[calc(100vh-80px)] overflow-y-auto">
+                <div
+                    id="mobile-menu"
+                    ref={mobileMenuRef}
+                    className="lg:hidden bg-white border-b border-gray-200 h-[calc(100vh-80px)] overflow-y-auto"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Main navigation menu"
+                >
                     <div className="px-4 pt-4 pb-6 space-y-2">
                         {NAV_ITEMS.map((item) => (
                             <div key={item.name} className="border-b border-gray-100 last:border-0 pb-2 last:pb-0">
@@ -152,6 +293,11 @@ export default function Navbar() {
                                     <>
                                         <button
                                             onClick={() => setDropdownOpen(dropdownOpen === item.name ? null : item.name)}
+                                            onKeyDown={(e) => {
+                                                if (e.key === "Escape") {
+                                                    setDropdownOpen(null);
+                                                }
+                                            }}
                                             className="text-gray-800 hover:text-primary w-full text-left px-4 py-4 rounded-md text-lg font-medium flex items-center justify-between min-h-[50px] active:bg-gray-50"
                                             aria-expanded={dropdownOpen === item.name}
                                             aria-haspopup="true"
@@ -160,13 +306,19 @@ export default function Navbar() {
                                             <ChevronDown size={20} className={`transition-transform duration-200 ${dropdownOpen === item.name ? 'rotate-180' : ''}`} aria-hidden="true" />
                                         </button>
                                         {dropdownOpen === item.name && (
-                                            <div className="pl-6 space-y-1 bg-gray-50/50 rounded-lg mb-2">
+                                            <div className="pl-6 space-y-1 bg-gray-50/50 rounded-lg mb-2" role="menu">
                                                 {item.dropdown.map((subItem) => (
                                                     <Link
                                                         key={subItem.name}
                                                         href={subItem.href}
+                                                        role="menuitem"
                                                         className="text-gray-600 hover:text-primary block px-4 py-3 rounded-md text-base min-h-[44px] flex items-center"
                                                         onClick={() => setIsOpen(false)}
+                                                        onKeyDown={(e) => {
+                                                            if (e.key === "Escape") {
+                                                                setDropdownOpen(null);
+                                                            }
+                                                        }}
                                                     >
                                                         {subItem.name}
                                                     </Link>

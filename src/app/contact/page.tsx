@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { BreadcrumbSchema } from "@/lib/schema";
+import ContactForm from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us - Visit El Meson de Pepe in Key West",
@@ -35,56 +36,40 @@ export default function ContactPage() {
                     {/* Info */}
                     <div className="space-y-8 bg-gray-50 p-8 rounded-xl border border-gray-200">
                         <div className="flex items-start space-x-4">
-                            <MapPin className="text-primary mt-1 w-6 h-6" />
+                            <MapPin className="text-primary mt-1 w-6 h-6" aria-hidden="true" />
                             <div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-2">Location</h3>
-                                <p className="text-gray-600">410 Wall Street<br />Key West, FL 33040</p>
+                                <h2 className="text-xl font-bold text-gray-900 mb-2">Location</h2>
+                                <address className="text-gray-600 not-italic">410 Wall Street<br />Key West, FL 33040</address>
                             </div>
                         </div>
 
                         <div className="flex items-center space-x-4">
-                            <Phone className="text-primary w-6 h-6" />
+                            <Phone className="text-primary w-6 h-6" aria-hidden="true" />
                             <div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-2">Phone</h3>
+                                <h2 className="text-xl font-bold text-gray-900 mb-2">Phone</h2>
                                 <p className="text-gray-600">305-295-2620</p>
                             </div>
                         </div>
 
                         <div className="flex items-center space-x-4">
-                            <Mail className="text-primary w-6 h-6" />
+                            <Mail className="text-primary w-6 h-6" aria-hidden="true" />
                             <div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-2">Email</h3>
+                                <h2 className="text-xl font-bold text-gray-900 mb-2">Email</h2>
                                 <p className="text-gray-600">info@elmesondepepe.com</p>
                             </div>
                         </div>
 
                         <div className="flex items-start space-x-4">
-                            <Clock className="text-primary mt-1 w-6 h-6" />
+                            <Clock className="text-primary mt-1 w-6 h-6" aria-hidden="true" />
                             <div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-2">Hours</h3>
+                                <h2 className="text-xl font-bold text-gray-900 mb-2">Hours</h2>
                                 <p className="text-gray-600">Open Daily 11:00 AM - 10:00 PM</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Form */}
-                    <form className="space-y-6">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                            <input type="text" className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-primary transition-colors" placeholder="Your Name" />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email" className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-primary transition-colors" placeholder="your@email.com" />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                            <textarea rows={4} className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-primary transition-colors" placeholder="How can we help you?" />
-                        </div>
-                        <button type="submit" className="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg transition-colors uppercase tracking-wide">
-                            Send Message
-                        </button>
-                    </form>
+                    <ContactForm />
 
                 </div>
             </div>
