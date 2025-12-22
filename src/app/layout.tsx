@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Great_Vibes, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -12,6 +12,21 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+});
+
+const greatVibes = Great_Vibes({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  preload: true,
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: "--font-serif",
   subsets: ["latin"],
   display: "swap",
   preload: true,
@@ -66,13 +81,13 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Add Google Search Console verification when available
-    // google: "your-verification-code",
+    google: "sWm7_rP2H_9XHu0NBY9NzH6ji3WhHhU-hR-TVZRp9MY",
   },
 };
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CookieBanner from "@/components/common/CookieBanner";
 import { OrganizationSchema } from "@/lib/schema";
 
 export default function RootLayout({
@@ -83,7 +98,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} ${playfairDisplay.variable} antialiased`}
       >
         <OrganizationSchema />
         <a href="#main-content" className="skip-link">
@@ -92,6 +107,7 @@ export default function RootLayout({
         <Navbar />
         <main id="main-content" aria-label="Main content">{children}</main>
         <Footer />
+        <CookieBanner />
         <Script
           id="sa-dynamic-optimization"
           strategy="afterInteractive"

@@ -200,7 +200,7 @@ export default function ContactForm() {
                 type="submit"
                 disabled={isSubmitting}
                 aria-disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-secondary disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-lg transition-colors uppercase tracking-wide focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="w-full bg-primary hover:bg-secondary disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-lg transition-colors uppercase tracking-wide min-h-[48px] text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-4"
             >
                 {isSubmitting ? "Sending..." : "Send Message"}
             </button>

@@ -43,6 +43,8 @@
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-script: var(--font-script), "Great Vibes", cursive;
+  --font-serif: var(--font-serif), "Playfair Display", Georgia, serif;
 }
 
 /* Smooth scrolling for better mobile UX */
@@ -131,4 +133,114 @@ a:hover:not(.bg-primary):not(.bg-secondary) {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* Font utility classes */
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Oval section container - elliptical background shape */
+.oval-section {
+  position: relative;
+  padding: 4rem 2rem;
+  margin: 3rem 0;
+  background: #F5F5F0;
+  border-radius: 50% / 20%;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .oval-section {
+    padding: 5rem 3rem;
+    margin: 4rem 0;
+  }
+}
+
+/* Refined button styles matching original - light background for better visibility */
+.btn-primary {
+  background: #E5E7EB; /* gray-200 - light background */
+  color: #111827; /* gray-900 - dark text for excellent contrast */
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid #D1D5DB; /* subtle border for definition */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--primary) !important; /* #D95D1E - primary orange color */
+  color: white !important; /* white text on orange background for readability */
+  border-color: var(--primary) !important; /* match border to background */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  outline-color: #D95D1E;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Ensure all buttons meet accessibility standards */
+button,
+a[role="button"],
+input[type="submit"],
+input[type="button"] {
+  min-height: 44px;
+  min-width: 44px;
+  font-size: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+}
+
+/* Enhanced focus visibility for better accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  outline-color: #D95D1E;
+}
+
+/* Ensure button text is white on hover - override any conflicting styles */
+a[class*="hover:bg-primary"]:hover,
+button[class*="hover:bg-primary"]:hover {
+  color: white !important;
+}
+
+/* Ensure consistent font sizing for all navbar menu items */
+nav[role="navigation"] button[aria-haspopup],
+nav[role="navigation"] a[href] {
+  font-size: 0.75rem !important; /* text-xs = 12px */
+  font-weight: 500 !important; /* font-medium */
+}
+
+nav[role="navigation"] button[aria-haspopup] span,
+nav[role="navigation"] a[href] span {
+  font-size: 0.75rem !important; /* text-xs = 12px */
+  font-weight: 500 !important; /* font-medium */
+}
+
+@media (hover: none) and (pointer: coarse) {
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible {
+    outline-width: 4px;
+    outline-offset: 4px;
+  }
 }

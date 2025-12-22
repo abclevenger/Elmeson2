@@ -24,35 +24,30 @@ export default function Hero() {
 
             {/* Content */}
             <div className="relative z-10 text-center px-6 sm:px-4 max-w-4xl mx-auto space-y-4 sm:space-y-6">
-                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-wider font-serif drop-shadow-lg">
-                    <span className="block text-primary text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-2 sm:mb-3 font-sans tracking-widest uppercase">
-                        Est. 1984
-                    </span>
-                    EL MESON DE PEPE
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white font-script drop-shadow-lg">
+                    Authentic
                 </h1>
-
-                <div className="h-1 w-20 sm:w-24 bg-primary mx-auto my-4 sm:my-6" />
-
-                <p className="text-lg sm:text-xl md:text-3xl text-gray-100 font-light tracking-wide drop-shadow-md px-4">
-                    Authentic <span className="text-accent font-semibold">CUBAN FOOD</span>
-                    <br />
+                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white font-serif tracking-wider uppercase drop-shadow-md">
+                    CUBAN FOOD
+                </p>
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 font-script drop-shadow-md">
                     In Mallory Square, Key West
                 </p>
 
                 <div className="pt-6 sm:pt-8">
                     <Link
                         href="/menu"
-                        className="inline-block bg-primary hover:bg-secondary text-white font-bold py-4 sm:py-5 px-12 sm:px-10 min-h-[44px] rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg border-2 border-primary hover:border-secondary uppercase tracking-widest text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50"
+                        className="inline-block bg-gray-200 hover:bg-primary hover:text-white text-gray-900 font-semibold py-3 sm:py-4 px-8 sm:px-12 min-h-[48px] transition-all duration-300 uppercase tracking-wider text-sm sm:text-base border border-gray-300 hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black/50"
                         aria-label="View our menu"
                     >
-                        View Menu
+                        OUR MENU
                     </Link>
                 </div>
             </div>
 
             {/* Scroll Indicator */}
             <div className="absolute bottom-8 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce" aria-label="Scroll down for more content">
-                <ArrowDown className="text-white/80 w-8 h-8 sm:w-10 sm:h-10" aria-hidden="true" />
+                <ArrowDown className="text-white w-10 h-10 sm:w-12 sm:h-12 drop-shadow-lg" aria-hidden="true" />
             </div>
         </section>
     );

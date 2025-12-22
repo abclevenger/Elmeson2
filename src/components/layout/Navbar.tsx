@@ -210,7 +210,7 @@ export default function Navbar() {
                                                 aria-haspopup="true"
                                                 onKeyDown={(e) => handleDropdownKeyDown(e, item.name, item)}
                                             >
-                                                <span>{item.name}</span>
+                                                <span className="text-xs font-medium">{item.name}</span>
                                                 <ChevronDown size={16} aria-hidden="true" />
                                             </button>
                                             {dropdownOpen === item.name && (
@@ -240,7 +240,7 @@ export default function Navbar() {
                                     ) : (
                                         <Link
                                             href={item.href}
-                                            className="text-gray-700 hover:text-primary transition-colors duration-200 px-2 py-2 rounded-md text-xs font-medium uppercase tracking-wide min-h-[44px] flex items-center whitespace-nowrap"
+                                            className="text-gray-700 hover:text-primary transition-colors duration-200 px-2 py-2 rounded-md text-xs font-medium uppercase tracking-wide min-h-[44px] flex items-center whitespace-nowrap text-xs"
                                         >
                                             {item.name}
                                         </Link>
@@ -251,12 +251,12 @@ export default function Navbar() {
                     </div>
 
                     {/* Social Icons (Desktop) */}
-                    <div className="hidden lg:flex items-center space-x-4">
-                        <Link href="https://www.facebook.com/ElMesonKeyWest/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary p-2 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Visit us on Facebook">
-                            <Facebook size={20} aria-hidden="true" />
+                    <div className="hidden lg:flex items-center space-x-3">
+                        <Link href="https://www.facebook.com/ElMesonKeyWest/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary p-2 min-h-[48px] min-w-[48px] flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Visit us on Facebook">
+                            <Facebook size={24} aria-hidden="true" />
                         </Link>
-                        <Link href="https://www.instagram.com/elmesondepepe/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary p-2 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Visit us on Instagram">
-                            <Instagram size={20} aria-hidden="true" />
+                        <Link href="https://www.instagram.com/elmesondepepe/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary p-2 min-h-[48px] min-w-[48px] flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Visit us on Instagram">
+                            <Instagram size={24} aria-hidden="true" />
                         </Link>
                     </div>
 

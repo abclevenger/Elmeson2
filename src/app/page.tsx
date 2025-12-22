@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import InfoSection from "@/components/home/InfoSection";
 import MenuPreview from "@/components/home/MenuPreview";
-import Location from "@/components/home/Location";
+import PatioBar from "@/components/home/PatioBar";
+import SunsetSection from "@/components/home/SunsetSection";
+import PrivatePartiesSection from "@/components/home/PrivatePartiesSection";
 import { RestaurantSchema, BreadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -34,7 +36,9 @@ export default function Home() {
       <Hero />
       <InfoSection />
       <MenuPreview />
-      <Location />
+      <PatioBar />
+      <SunsetSection />
+      <PrivatePartiesSection />
     </>
   );
 }

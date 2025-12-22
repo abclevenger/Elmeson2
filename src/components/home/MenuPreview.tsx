@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 const FEATURED_ITEMS = [
     {
@@ -22,19 +21,19 @@ const FEATURED_ITEMS = [
 export default function MenuPreview() {
     return (
         <section className="py-16 md:py-24 bg-white text-gray-800 relative overflow-hidden" aria-label="Featured menu items">
-            {/* Decorative Background Pattern */}
-            <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#D95D1E_1px,transparent_1px)] [background-size:20px_20px]" aria-hidden="true" />
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-12 md:mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-primary font-serif tracking-wide">
-                        Our Favorites
-                    </h2>
-                    <div className="h-1 w-20 bg-secondary mx-auto mt-4 md:mt-6" />
-                    <p className="mt-4 text-lg md:text-xl text-gray-600 font-light max-w-2xl mx-auto">
-                        Taste the tradition in every bite, prepared fresh daily in our kitchen.
-                    </p>
-                </div>
+            <div className="oval-section">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="text-center mb-12 md:mb-16">
+                        <h2 className="text-5xl md:text-7xl lg:text-8xl text-gray-800 font-script mb-2">
+                            Discover
+                        </h2>
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-gray-800 uppercase tracking-wide mb-6">
+                            OUR MENU
+                        </h3>
+                        <p className="text-base md:text-lg text-gray-700 font-serif max-w-2xl mx-auto">
+                            Taste the tradition in every bite, prepared fresh daily in our kitchen. Explore popular Cuban favorites like Cuban Nachos, Lechon Asado, and Vaca Frita.
+                        </p>
+                    </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                     {FEATURED_ITEMS.map((item) => (
@@ -55,15 +54,15 @@ export default function MenuPreview() {
                     ))}
                 </div>
 
-                <div className="text-center mt-12 md:mt-16">
-                    <Link
-                        href="/menu"
-                        className="inline-flex items-center space-x-2 text-white bg-secondary hover:bg-primary transition-all duration-300 px-8 py-4 rounded-full font-bold uppercase tracking-widest shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                        aria-label="View our full menu"
-                    >
-                        <span>View Full Menu</span>
-                        <ArrowRight size={20} aria-hidden="true" />
-                    </Link>
+                    <div className="text-center mt-12 md:mt-16">
+                        <Link
+                            href="/menu"
+                            className="inline-block bg-gray-200 hover:bg-primary hover:text-white text-gray-900 font-semibold py-3 px-8 min-h-[48px] transition-all duration-300 uppercase tracking-wider text-sm sm:text-base border border-gray-300 hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-4"
+                            aria-label="View our full menu"
+                        >
+                            VIEW MENU
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>
