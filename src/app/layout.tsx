@@ -99,6 +99,23 @@ export default function RootLayout({
             __html: `var script = document.createElement("script");script.setAttribute("nowprocket", "");script.setAttribute("nitro-exclude", "");script.src = "https://seo.ymbs.pro/scripts/dynamic_optimization.js";script.dataset.uuid = "f1f7b153-6650-4384-b863-b4f3c9330d09";script.id = "sa-dynamic-optimization-loader";document.head.appendChild(script);`,
           }}
         />
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-0YWZC8X9PH"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-0YWZC8X9PH');
+            `,
+          }}
+        />
       </body>
     </html>
   );
