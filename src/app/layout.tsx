@@ -102,9 +102,6 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <OrganizationSchema />
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
         <Navbar />
         <main id="main-content" aria-label="Main content">{children}</main>
         <Footer />
