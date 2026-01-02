@@ -4,27 +4,27 @@ import { Users, Utensils, Music, Wine, Phone, Mail } from "lucide-react";
 import { BreadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Private Parties & Events - El Meson de Pepe Key West",
-  description: "Host your private party or event at El Meson de Pepe in Key West. Custom catering, live music, and authentic Cuban cuisine for your special occasion.",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  openGraph: {
     title: "Private Parties & Events - El Meson de Pepe Key West",
-    description: "Host your private party or event at El Meson de Pepe in Key West. Custom catering and authentic Cuban cuisine.",
-    url: "https://www.elmesondepepe.com/parties",
-  },
-  alternates: {
-    canonical: "/parties",
-  },
+    description: "Host your private party or event at El Meson de Pepe in Key West. Custom catering, live music, and authentic Cuban cuisine for your special occasion.",
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
+    openGraph: {
+        title: "Private Parties & Events - El Meson de Pepe Key West",
+        description: "Host your private party or event at El Meson de Pepe in Key West. Custom catering and authentic Cuban cuisine.",
+        url: "https://www.elmesondepepe.com/parties",
+    },
+    alternates: {
+        canonical: "/parties",
+    },
 };
 
 export default function PrivatePartiesPage() {
@@ -35,232 +35,367 @@ export default function PrivatePartiesPage() {
                 { name: "Private Parties", url: "/parties" },
             ]} />
             <div className="bg-white min-h-screen">
-            {/* Hero Section */}
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-100 to-white">
-                <div className="relative z-10 text-center px-4">
-                    <h1 className="text-5xl md:text-7xl font-bold text-primary font-serif mb-4 tracking-wider">
-                        PRIVATE PARTIES
-                    </h1>
-                    <div className="h-1 w-32 bg-secondary mx-auto my-6" />
-                    <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto font-light">
-                        Host your special event in the heart of Key West with authentic Cuban cuisine and live entertainment
-                    </p>
-                </div>
-            </section>
-
-            {/* Introduction */}
-            <section className="py-16 px-4 max-w-4xl mx-auto text-center">
-                <p className="text-lg text-gray-700 leading-relaxed mb-8">
-                    Whether you're planning a corporate event, wedding reception, birthday celebration, or any special occasion,
-                    El Meson de Pepe offers the perfect setting with our authentic Cuban atmosphere, delicious cuisine, and
-                    exceptional service.
-                </p>
-                <p className="text-gray-600">
-                    Our experienced event coordinators will work with you to create a memorable experience tailored to your needs.
-                </p>
-            </section>
-
-            {/* Party Packages */}
-            <section className="py-16 px-4 bg-gray-50">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="text-4xl font-bold text-secondary text-center mb-12 font-serif">Party Packages</h2>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-
-                        {/* Package 1 */}
-                        <div className="bg-white border border-gray-200 rounded-xl p-8 hover:border-primary/50 hover:shadow-lg transition-all">
-                            <h3 className="text-2xl font-bold text-primary mb-4">Cocktail Reception</h3>
-                            <p className="text-3xl font-bold text-secondary mb-6">$35 <span className="text-lg text-gray-600">per person</span></p>
-                            <ul className="space-y-3 text-gray-700">
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Selection of Cuban appetizers (Empanadas, Croquetas, Tostones)</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Two-hour open bar (beer, wine, sangria)</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Minimum 25 guests</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Package 2 */}
-                        <div className="bg-white border border-gray-200 rounded-xl p-8 hover:border-primary/50 hover:shadow-lg transition-all">
-                            <h3 className="text-2xl font-bold text-primary mb-4">Seated Dinner</h3>
-                            <p className="text-3xl font-bold text-secondary mb-6">$55 <span className="text-lg text-gray-600">per person</span></p>
-                            <ul className="space-y-3 text-gray-700">
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Three-course Cuban dinner (appetizer, entrée, dessert)</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Choice of Ropa Vieja, Lechón Asado, or Pollo Asado</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Three-hour open bar</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Minimum 30 guests</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Package 3 */}
-                        <div className="bg-white border border-gray-200 rounded-xl p-8 hover:border-primary/50 hover:shadow-lg transition-all">
-                            <h3 className="text-2xl font-bold text-primary mb-4">Buffet Style</h3>
-                            <p className="text-3xl font-bold text-secondary mb-6">$45 <span className="text-lg text-gray-600">per person</span></p>
-                            <ul className="space-y-3 text-gray-700">
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Cuban buffet with multiple entrée options</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Traditional sides (rice, beans, plantains)</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Two-hour open bar</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Minimum 40 guests</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Package 4 */}
-                        <div className="bg-white border border-gray-200 rounded-xl p-8 hover:border-primary/50 hover:shadow-lg transition-all">
-                            <h3 className="text-2xl font-bold text-primary mb-4">Premium Experience</h3>
-                            <p className="text-3xl font-bold text-secondary mb-6">$75 <span className="text-lg text-gray-600">per person</span></p>
-                            <ul className="space-y-3 text-gray-700">
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Four-course gourmet Cuban dinner</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Premium entrée selections including seafood</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Four-hour premium open bar (top-shelf spirits)</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Live Salsa band performance</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className="text-primary mr-2">•</span>
-                                    <span>Minimum 50 guests</span>
-                                </li>
-                            </ul>
-                        </div>
-
+                {/* Hero Section */}
+                <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0">
+                        <div className="absolute inset-0 bg-[url('/images/hero.webp')] bg-cover bg-center" />
+                        <div className="absolute inset-0 bg-black/50" />
                     </div>
-                </div>
-            </section>
+                    <div className="relative z-10 text-center px-4">
+                        <h1 className="text-5xl md:text-8xl font-bold text-white font-serif mb-4 tracking-wider uppercase drop-shadow-lg">
+                            Private Parties
+                        </h1>
+                        <div className="h-1.5 w-32 bg-secondary mx-auto my-6 shadow-lg" />
+                        <p className="text-xl md:text-2xl text-white/95 max-w-3xl mx-auto font-light italic drop-shadow-md">
+                            Authentic Cuban celebrations in the heart of Mallory Square
+                        </p>
+                    </div>
+                </section>
 
-            {/* What's Included */}
-            <section className="py-16 px-4 bg-white">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="text-4xl font-bold text-secondary text-center mb-12 font-serif">What's Included</h2>
-
-                    <div className="grid md:grid-cols-4 gap-8">
-                        <div className="text-center">
-                            <div className="bg-primary/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Utensils className="w-10 h-10 text-primary" />
+                {/* Introduction & Coordinator */}
+                <section className="py-20 px-4 max-w-6xl mx-auto">
+                    <div className="grid lg:grid-cols-3 gap-16 items-start">
+                        <div className="lg:col-span-2 space-y-8">
+                            <p className="text-xl text-gray-800 leading-relaxed font-light">
+                                <span className="text-4xl font-serif text-primary block mb-2">Host Your Event with Us</span>
+                                Finding a venue for your private party in Key West can be a challenge, especially if you need to entertain a large group. Many of the restaurants on the island are small with limited outdoor space. That is certainly not the case with El Meson de Pepe.
+                            </p>
+                            <p className="text-lg text-gray-700 leading-relaxed">
+                                We can accommodate smaller parties as well as large events for up to <span className="font-bold text-primary">300 guests</span>. We specialize in &ldquo;Friday Night&rdquo; rehearsal dinners, full wedding receptions, private cocktail parties, and corporate outings. Treat your guests to the flavors of Cuba with unique buffet stations or smaller parties have the option of choosing a plated service.
+                            </p>
+                            <div className="bg-secondary/5 border-l-4 border-secondary p-6 italic text-gray-700">
+                                &ldquo;Below are sample menus that should help you select the options most suited to your tastes. Please feel free to select options from any of the menus and we will provide a custom quote for your group.&rdquo;
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Authentic Cuisine</h3>
-                            <p className="text-gray-600">Traditional Cuban recipes prepared fresh</p>
                         </div>
-
-                        <div className="text-center">
-                            <div className="bg-primary/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Music className="w-10 h-10 text-primary" />
+                        <div className="bg-gray-50 p-10 rounded-3xl border border-gray-100 shadow-xl text-center relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110" />
+                            <h3 className="text-primary font-serif text-2xl mb-6 italic">Event Coordinator</h3>
+                            <div className="space-y-4 text-gray-700 relative z-10">
+                                <p className="font-bold text-2xl mb-1">Jose M. Diaz Jr.</p>
+                                <p className="text-secondary uppercase tracking-widest text-xs font-bold">General Manager / Event Coordinator</p>
+                                <div className="h-px w-16 bg-secondary/30 mx-auto my-6" />
+                                <div className="space-y-4">
+                                    <a href="tel:305-295-2620" className="flex items-center justify-center gap-3 text-primary hover:text-secondary transition-colors font-semibold text-lg">
+                                        <Phone className="w-5 h-5" /> 305-295-2620
+                                    </a>
+                                    <a href="mailto:jose@elmesondepepe.com" className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full hover:bg-secondary transition-all shadow-md uppercase tracking-wider text-sm font-bold">
+                                        <Mail className="w-4 h-4" /> Email Jose
+                                    </a>
+                                </div>
+                                <p className="text-xs text-gray-500 mt-6 leading-relaxed">
+                                    Contact us to discuss your vision and receive a custom quote for your special occasion.
+                                </p>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Live Entertainment</h3>
-                            <p className="text-gray-600">Salsa bands and Cuban music</p>
-                        </div>
-
-                        <div className="text-center">
-                            <div className="bg-primary/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Wine className="w-10 h-10 text-primary" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Full Bar Service</h3>
-                            <p className="text-gray-600">Mojitos, sangria, and premium spirits</p>
-                        </div>
-
-                        <div className="text-center">
-                            <div className="bg-primary/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Users className="w-10 h-10 text-primary" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Event Coordinator</h3>
-                            <p className="text-gray-600">Dedicated staff for your event</p>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Additional Info */}
-            <section className="py-16 px-4 bg-gray-50">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-3xl font-bold text-secondary text-center mb-8 font-serif">Additional Information</h2>
-
-                    <div className="space-y-6 text-gray-700">
-                        <div className="bg-white p-6 rounded-lg border border-gray-200">
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">Venue Capacity</h3>
-                            <p>Our restaurant can accommodate up to 150 guests for private events. We offer both indoor and outdoor seating options with views of Mallory Square.</p>
+                {/* Fees & Charges */}
+                <section className="py-24 bg-gray-50">
+                    <div className="max-w-6xl mx-auto px-4">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4 uppercase tracking-tight text-primary">General Fees & Charges</h2>
+                            <div className="h-1 w-24 bg-secondary mx-auto" />
+                            <p className="mt-6 text-gray-600 max-w-2xl mx-auto font-light">Each dining room has a rental fee; this rental fee is given the day you decide to hold your party with us. The fees are as follows:</p>
                         </div>
 
-                        <div className="bg-white p-6 rounded-lg border border-gray-200">
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">Customization</h3>
-                            <p>All packages can be customized to meet your specific needs. Vegetarian, vegan, and gluten-free options are available upon request.</p>
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-16">
+                            {[
+                                { title: "1/2 The Garden", price: "$200" },
+                                { title: "Whole Garden", price: "$400" },
+                                { title: "1/2 The Inside", price: "$300" },
+                                { title: "Whole Inside", price: "$500" },
+                                { title: "Satellite Bar", price: "$200" },
+                            ].map((fee, idx) => (
+                                <div key={idx} className="bg-white p-6 rounded-2xl border border-gray-100 text-center hover:border-secondary transition-colors shadow-sm hover:shadow-md">
+                                    <h3 className="text-secondary font-serif text-lg mb-2">{fee.title}</h3>
+                                    <p className="text-3xl font-bold font-serif text-primary">{fee.price}</p>
+                                </div>
+                            ))}
                         </div>
 
-                        <div className="bg-white p-6 rounded-lg border border-gray-200">
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">Booking & Deposits</h3>
-                            <p>A 50% deposit is required to secure your date. Final guest count and menu selections are due 7 days prior to your event.</p>
+                        <div className="grid md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto mb-20 px-4">
+                            <div className="group">
+                                <p className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-2">Set-up Fee</p>
+                                <p className="text-2xl font-bold font-serif text-primary">$1.50 <span className="text-xs font-normal text-gray-400">per person</span></p>
+                            </div>
+                            <div className="group">
+                                <p className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-2">Linen Rental*</p>
+                                <p className="text-2xl font-bold font-serif text-primary">$1.50 <span className="text-xs font-normal text-gray-400">per person</span></p>
+                            </div>
+                            <div className="group">
+                                <p className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-2">Standard Gratuity</p>
+                                <p className="text-2xl font-bold font-serif text-primary">20% <span className="text-xs font-normal text-gray-400">of total bill</span></p>
+                            </div>
+                            <div className="group">
+                                <p className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-2">Sales Tax</p>
+                                <p className="text-2xl font-bold font-serif text-primary">7.5% <span className="text-xs font-normal text-gray-400">of total bill</span></p>
+                            </div>
+                        </div>
+
+                        <div className="bg-white rounded-3xl p-10 border border-gray-100 text-sm text-gray-600 space-y-6 max-w-4xl mx-auto shadow-xl">
+                            <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 text-secondary font-bold">*</div>
+                                <p className="leading-relaxed">Linens are not required for your event but are suggested to enhance the overall effect of your event.</p>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 text-secondary font-bold">**</div>
+                                <p className="leading-relaxed">Half of the total bill is due two weeks prior to your event along with a final head count. (Alcohol bill will not be included at this point.)</p>
+                            </div>
+                            <div className="pt-8 border-t border-gray-100 mt-8">
+                                <h4 className="text-secondary font-bold uppercase tracking-widest text-xs mb-4">Peak Hours & spending Minimums</h4>
+                                <p className="italic text-xs leading-relaxed opacity-80">
+                                    *** DURING PEAK DINING HOURS (WEEKENDS & POST SUNSET), THERE ARE ALSO SPENDING MINIMUMS THAT MUST BE MET FOR DINING ROOM RENTALS (e.g. FULL GARDEN RENTAL – $4,000.00 AND FULL INSIDE RENTAL – $6,000.00) (PARTIAL ROOM GARDEN – $65.00PP, INSIDE – $50.00PP).
+                                </p>
+                                <p className="mt-4 italic text-xs leading-relaxed opacity-80">
+                                    **** DUE TO THE LIMITED SIZE OF OUR KITCHEN, IF YOUR PARTY CONSISTS OF MORE THAN 25 GUESTS, YOU MAY ONLY CHOOSE OUR BUFFET OPTIONS. BUFFET OPTIONS ARE A MIX OF TABLE SERVICE AND BUFFET SERVICE.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Contact CTA */}
-            <section className="py-20 px-4 bg-white">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h2 className="text-4xl font-bold text-primary mb-6 font-serif">Ready to Plan Your Event?</h2>
-                    <p className="text-xl text-gray-700 mb-8">
-                        Contact our events team to discuss your vision and receive a custom quote
-                    </p>
+                {/* Bar Rates */}
+                <section className="py-24 bg-gray-50 border-b border-gray-100">
+                    <div className="max-w-4xl mx-auto px-4 text-center">
+                        <Wine className="w-12 h-12 text-secondary mx-auto mb-6" />
+                        <h2 className="text-4xl md:text-5xl font-bold text-primary font-serif mb-6 uppercase tracking-tight">Bar Rates</h2>
+                        <p className="text-secondary font-bold uppercase tracking-widest text-xs mb-4">Consumption Basis</p>
+                        <p className="text-xl text-gray-700 leading-relaxed font-light italic">
+                            You will be charged for each drink served to your guests according to your menu specifications. You may choose to have only beer and wine, a full-service bar, no frozen drinks, etc. You will be notified when your personalized estimate is reached.
+                        </p>
+                    </div>
+                </section>
 
-                    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-                        <div className="flex items-center space-x-3">
-                            <Phone className="text-primary w-6 h-6" />
-                            <span className="text-gray-900 text-lg">305-295-2620</span>
+                {/* Buffet Options */}
+                <section className="py-24 px-4 bg-white overflow-hidden relative">
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full -mr-48 -mt-48 blur-3xl" />
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full -ml-48 -mb-48 blur-3xl" />
+
+                    <div className="max-w-7xl mx-auto relative z-10">
+                        <div className="text-center mb-20">
+                            <h2 className="text-4xl md:text-6xl font-bold text-primary font-serif mb-6 uppercase tracking-tight">Buffet Packages</h2>
+                            <p className="text-gray-600 text-lg max-w-2xl mx-auto font-light">Authentic Cuban buffets for groups larger than 25 guests.</p>
                         </div>
-                        <div className="flex items-center space-x-3">
-                            <Mail className="text-primary w-6 h-6" />
-                            <span className="text-gray-900 text-lg">events@elmesondepepe.com</span>
+
+                        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                            {/* Buffet Option 1 */}
+                            <div className="bg-white rounded-[3rem] p-12 shadow-2xl border border-gray-100 flex flex-col hover:shadow-primary/10 transition-all group overflow-hidden relative">
+                                <div className="absolute top-0 right-0 p-8 text-primary/5 font-serif text-8xl pointer-events-none">01</div>
+                                <h3 className="text-3xl font-bold text-primary font-serif mb-4 group-hover:text-secondary transition-colors">Buffet Option 1</h3>
+                                <div className="flex items-baseline mb-10 pb-6 border-b border-gray-50">
+                                    <span className="text-5xl font-bold text-primary font-serif">$33.00</span>
+                                    <span className="text-gray-500 ml-2 text-sm font-medium">per person + tax/gratuity</span>
+                                </div>
+
+                                <div className="space-y-8 grow">
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-4">Appetizers (Choose Two - Family Style)</h4>
+                                        <ul className="grid grid-cols-2 gap-2 text-sm text-gray-700 font-medium">
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-secondary" /> Conch Fritters</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-secondary" /> Chicken Wings</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-secondary" /> Masitas de Cerdo</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-secondary" /> Fried Squid Rings</li>
+                                        </ul>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-4">Salad (Choose One - Table Side)</h4>
+                                        <ul className="flex gap-6 text-sm text-gray-700 font-bold italic">
+                                            <li>Caesar Salad</li>
+                                            <li>House Salad</li>
+                                        </ul>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-4">Entrees (Choose Two - Buffet)</h4>
+                                        <ul className="grid grid-cols-2 gap-2 text-sm text-gray-700 font-medium">
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Roast Pork</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Baked Garlic Chicken</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Picadillo</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Ropa Vieja</li>
+                                        </ul>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-4">Sides & Sweets</h4>
+                                        <p className="text-sm text-gray-600 mb-2 italic">Sides (Choose 3): Yellow/White Rice, Moro, Black Beans, Plantains, Yucca</p>
+                                        <p className="text-sm text-gray-600 italic">Dessert (Choose 1): Key Lime Pie or Flan</p>
+                                    </section>
+                                </div>
+
+                                <div className="mt-12 pt-8 border-t border-gray-100 italic text-xs text-primary/60 font-medium">
+                                    Cuban bread, iced tea, fountain drinks, and American coffee included.
+                                </div>
+                            </div>
+
+                            {/* Buffet Option 2 */}
+                            <div className="bg-white rounded-[3rem] p-12 shadow-2xl border border-gray-100 flex flex-col hover:shadow-secondary/10 transition-all group overflow-hidden relative">
+                                <div className="absolute top-0 right-0 p-8 text-secondary/5 font-serif text-8xl pointer-events-none">02</div>
+                                <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-secondary text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest shadow-lg">Most popular</div>
+                                <h3 className="text-3xl font-bold text-primary font-serif mb-4 group-hover:text-secondary transition-colors">Buffet Option 2</h3>
+                                <div className="flex items-baseline mb-10 pb-6 border-b border-gray-50">
+                                    <span className="text-5xl font-bold text-primary font-serif">$41.00</span>
+                                    <span className="text-gray-500 ml-2 text-sm font-medium">per person + tax/gratuity</span>
+                                </div>
+
+                                <div className="space-y-8 grow">
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-4">Appetizers (Choose Three - Family Style)</h4>
+                                        <ul className="grid grid-cols-2 gap-2 text-sm text-gray-700 font-medium">
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-secondary" /> Garlic Shrimps</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-secondary" /> Garlic Pork Cubes</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-secondary" /> Fried Squid Rings</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-secondary" /> Chicken Wings</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-secondary" /> Conch Fritters</li>
+                                        </ul>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-4">Salad & Entrees</h4>
+                                        <p className="text-sm text-gray-600 mb-4 italic">Salad (Table Side): House or Caesar</p>
+                                        <ul className="grid grid-cols-2 gap-2 text-sm text-gray-700 font-bold">
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Roast Pork</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Garlic Shrimp</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Grilled Grouper</li>
+                                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Pollo Meson</li>
+                                            <li className="flex items-center gap-2 text-primary/50"><div className="w-1.5 h-1.5 rounded-full bg-primary/20" /> & more...</li>
+                                        </ul>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-4">Sides & Sweets</h4>
+                                        <p className="text-sm text-gray-600 mb-2 italic">Sides (Choose 3): All Option 1 + Boiled/Fried Yucca</p>
+                                        <p className="text-sm text-gray-700 font-bold italic">Dessert (Choose 2): Tres Leche, Flan, or Key Lime Pie</p>
+                                    </section>
+                                </div>
+
+                                <div className="mt-12 pt-8 border-t border-gray-100 italic text-xs text-primary/60 font-medium">
+                                    Cuban bread, iced tea, fountain drinks, and American coffee included.
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </section>
 
-                    <Link
-                        href="/contact"
-                        className="inline-block bg-primary hover:bg-secondary text-white font-bold py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                        aria-label="Request a quote for your private party"
-                    >
-                        Request a Quote
-                    </Link>
-                </div>
-            </section>
-        </div>
+                {/* Plated Menus */}
+                <section className="py-24 px-4 bg-gray-50">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl md:text-5xl font-bold text-primary font-serif mb-4 uppercase">Premium Plated Menus</h2>
+                            <div className="h-1 w-24 bg-secondary mx-auto mb-6" />
+                            <p className="text-gray-600 max-w-2xl mx-auto font-light">
+                                Elegant seated dining experiences for groups under 25 guests.
+                            </p>
+                        </div>
+
+                        <div className="grid lg:grid-cols-3 gap-8 mb-20">
+                            {[
+                                {
+                                    name: "Silver Plated",
+                                    price: "$35.00",
+                                    items: ["2 Appetizers", "Green Salad", "3 Entrees", "1 Dessert"],
+                                    desc: "Conch Fritters, Mollete, Pollo al Meson..."
+                                },
+                                {
+                                    name: "Golden Plated",
+                                    price: "$48.00",
+                                    items: ["2 Appetizers", "Salad Choice", "3 Entrees", "2 Desserts"],
+                                    desc: "Coconut Shrimp, Grilled Grouper, Guava Pudding...",
+                                    premium: true
+                                },
+                                {
+                                    name: "Platinum Plated",
+                                    price: "$77.00",
+                                    items: ["3 Appetizers", "Soup & Salad", "3 Entrees", "2 Desserts"],
+                                    desc: "Pepe's Cuban Nachos, Beef Paella, Seafood Combo..."
+                                }
+                            ].map((pkg, idx) => (
+                                <div key={idx} className={`rounded-3xl p-10 flex flex-col transition-all group ${pkg.premium ? 'bg-gray-900 text-white shadow-2xl scale-105 z-10 border border-gray-800' : 'bg-white border border-gray-100 hover:border-secondary shadow-lg'}`}>
+                                    <h3 className={`text-2xl font-bold font-serif mb-2 ${pkg.premium ? 'text-secondary' : 'text-primary'}`}>{pkg.name}</h3>
+                                    <div className="mb-8">
+                                        <span className={`text-4xl font-bold font-serif ${pkg.premium ? 'text-white' : 'text-primary'}`}>{pkg.price}</span>
+                                        <span className={`text-xs ml-2 ${pkg.premium ? 'text-white/60' : 'text-gray-400'}`}>per person</span>
+                                    </div>
+                                    <ul className="space-y-4 grow mb-10">
+                                        {pkg.items.map((item, i) => (
+                                            <li key={i} className="flex items-center gap-3 text-sm font-medium">
+                                                <Utensils className={`w-4 h-4 ${pkg.premium ? 'text-secondary' : 'text-secondary'}`} />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <p className={`text-xs italic leading-relaxed border-t pt-6 ${pkg.premium ? 'text-white/60 border-white/10' : 'text-gray-500 border-gray-100'}`}>
+                                        {pkg.desc}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Plated Item Details */}
+                        <div className="bg-white rounded-[3rem] p-12 shadow-xl border border-gray-100">
+                            <h3 className="text-3xl font-bold text-primary font-serif mb-12 text-center uppercase tracking-widest">Menu Item Highlights</h3>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
+                                <div>
+                                    <h4 className="text-secondary font-bold uppercase tracking-widest text-xs mb-6 border-b border-secondary/20 pb-2">Signature Appetizers</h4>
+                                    <ul className="space-y-4 text-sm text-gray-700 font-medium">
+                                        <li>Conch Fritters & Molletes</li>
+                                        <li>Tostones Rellenos (Stuffed Plantains)</li>
+                                        <li>Garlic & Coconut Shrimp</li>
+                                        <li className="text-primary font-bold italic">Pepe&apos;s Cuban Nachos (Platinum)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className="text-secondary font-bold uppercase tracking-widest text-xs mb-6 border-b border-secondary/20 pb-2">House Entrees</h4>
+                                    <ul className="space-y-4 text-sm text-gray-700 font-medium">
+                                        <li>Pollo al Meson (House Chicken)</li>
+                                        <li>Baby Churrasco & Ropa Vieja</li>
+                                        <li>Grilled Grouper / Seafood Combo</li>
+                                        <li className="text-primary font-bold italic">Beef Paella a la Cubana</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className="text-secondary font-bold uppercase tracking-widest text-xs mb-6 border-b border-secondary/20 pb-2">Homemade Desserts</h4>
+                                    <ul className="space-y-4 text-sm text-gray-700 font-medium">
+                                        <li>Classic Flan Casero</li>
+                                        <li>Key Lime Pie (Traditional)</li>
+                                        <li>Guava Bread Pudding</li>
+                                        <li>Tres Leches Cake</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Final Closing */}
+                <section className="py-24 px-4 text-center bg-white relative">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-4xl font-bold text-primary font-serif mb-8 italic">Authentic Cuban Hospitality</h2>
+                        <p className="text-gray-700 text-xl leading-relaxed mb-8 font-light italic">
+                            &ldquo;Again, thank you for your interest in El Meson de Pepe. I hope you saw some interesting options you would like to inquire more about, and if so, I would be more than happy to answer any questions.&rdquo;
+                        </p>
+                        <p className="text-gray-500 mb-12">
+                            To make your selection easier, our full menu is available below with detailed descriptions of all our offerings.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                            <Link
+                                href="/menu"
+                                className="inline-block bg-primary text-white hover:bg-secondary font-bold py-5 px-12 rounded-full transition-all duration-300 shadow-xl uppercase tracking-widest group"
+                            >
+                                View Full Menu <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+                            </Link>
+                            <Link
+                                href="mailto:jose@elmesondepepe.com"
+                                className="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-[1.2rem] px-12 rounded-full transition-all duration-300 uppercase tracking-widest"
+                            >
+                                Contact Coordinator
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </>
     );
 }
