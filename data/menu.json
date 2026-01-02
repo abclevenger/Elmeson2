@@ -1,0 +1,318 @@
+{
+  "Tapas": {
+    "Frituras de Cobo": [
+      {
+        "name": "Conch fritters",
+        "description": "Corn meal fritters w/cracked conch"
+      },
+      {
+        "name": "Tamal Cubano en Hoja",
+        "description": "Corn based appetizer wrapped in corn husk, and filled with roast pork, on a bed of plantain chips"
+      },
+      {
+        "name": "Masitas de Cerdo Frita",
+        "description": "Fresh pork cubes marinated and golden fried, served with onions and parsley"
+      },
+      {
+        "name": "Alitas de Pollo",
+        "description": "Marinated fried chicken wings in garlic mojo sauce"
+      },
+      {
+        "name": "Vieiras al Ajillo",
+        "description": "Scallops sautéed in garlic, olive oil, lemon and white wine"
+      },
+      {
+        "name": "Calamares Empanizados con Salsa de Sofrito",
+        "description": "Crunchy fried squid served with tangy Creole sauce"
+      },
+      {
+        "name": "Mollete a la Pancho",
+        "description": "Cuban bread stuffed w/ picadillo, then breaded and fried – A local favorite"
+      },
+      {
+        "name": "Gambas a la Plancha",
+        "description": "Tasty grilled jumbo shrimp in their natural shell. Suck, peel and eat them the \"Cuban way\""
+      },
+      {
+        "name": "Antojitos",
+        "description": "Fried Cheese and Chorizo over a bed of plantain chips"
+      }
+    ],
+    "Featured": [
+      {
+        "name": "Pepe’s Cuban Nachos",
+        "description": "Homemade plantain chips topped w/Ropa Vieja, Picadillo, Guacamole, cheese, diced tomatoes, and onions"
+      },
+      {
+        "name": "Camarones al Ajillo",
+        "description": "Shrimp sautéed in garlic, olive oil, lemon, and white wine"
+      },
+      {
+        "name": "Guacamole Cubano",
+        "description": "Served with homemade plantain chips"
+      },
+      {
+        "name": "Tostones Rellenos",
+        "description": "Four stuffed green plantains, filled with Roast Pork, Picadillo, Ropa Vieja, and Seafood Creole"
+      },
+      {
+        "name": "Camarones de Coco",
+        "description": "Fried coconut shrimp served on a bed of plantain chips with Pepe’s homemade pineapple marmalade"
+      },
+      {
+        "name": "Seviche de Mariscos",
+        "description": "Pepe’s blend of Seafood Seviche"
+      }
+    ]
+  },
+  "Salads/Soups/Sides": {
+    "note": "Add to any salad (extra charge): Chicken, Garlic Shrimp, Steak",
+    "Salads": [
+      {
+        "name": "Lechuga y Tomate",
+        "description": "Salad of lettuce and tomatoes"
+      }
+    ],
+    "Featured": [
+      {
+        "name": "Meson Salad",
+        "description": "Romaine lettuce, avocado (in season), tomatoes, cucumbers, shredded cheese, and onions"
+      },
+      {
+        "name": "Caesar Salad",
+        "description": "Romaine lettuce, shredded cheese, fresh croutons"
+      }
+    ],
+    "Soups": [
+      {
+        "name": "Sopa del Dia",
+        "description": "Pepe's special soup of the day"
+      },
+      {
+        "name": "Potage de Frijoles Negros",
+        "description": "Cuban black bean soup w/onions and parsley"
+      },
+      {
+        "name": "Sopa de Pollo con Fideos",
+        "description": "Homemade chicken noodle soup"
+      },
+      {
+        "name": "Conch Chowder",
+        "description": "Homemade red based conch chowder"
+      }
+    ],
+    "Sides": [
+      {
+        "name": "Platanos Maduros",
+        "description": "Fried ripe, sweet plantains"
+      },
+      {
+        "name": "Tostones",
+        "description": "Refried, flattened green plantains"
+      },
+      {
+        "name": "Papitas Fritas",
+        "description": "French fries"
+      },
+      {
+        "name": "Arroz Blanco o Amarillo",
+        "description": "White or yellow rice"
+      },
+      {
+        "name": "Yuca Hervida o Frita",
+        "description": "Boiled or fried yucca with onion mojo sauce"
+      },
+      {
+        "name": "Mariquitas",
+        "description": "Fried thin sliced plantain chips"
+      },
+      {
+        "name": "Completa",
+        "description": "A combination of sides with your choice of: rice, black beans and sweet plantains or yucca"
+      },
+      {
+        "name": "Aguacate",
+        "description": "Fresh avocado slices (in season)"
+      }
+    ]
+  },
+  "Sandwiches": {
+    "note": "Served daily 11 am - 3 pm only",
+    "Featured": [
+      {
+        "name": "Cayo Hueso Cuban Mix",
+        "description": "Key West's version of the traditional Cuban Sandwich, served with all the trimmings: sugar glazed ham, roast pork, Swiss cheese, pickles, lettuce, mustard, tomatoes & mayonnaise on crispy pressed Cuban bread"
+      },
+      {
+        "name": "Pan con Bistec",
+        "description": "Top prime sirloin steak sandwich with grilled onions, served with julienne potatoes, lettuce, and tomatoes"
+      },
+      {
+        "name": "Emparedado de Pollo",
+        "description": "Mojo marinated, grilled chicken sandwich served with lettuce, mayonnaise, tomatoes and caramelized onions"
+      },
+      {
+        "name": "Emparedado de Pescado",
+        "description": "Breaded and deep fried fish served with lettuce, tomatoes and homemade tartar sauce"
+      },
+      {
+        "name": "Pan con Ropa Vieja",
+        "description": "Shredded beef in tomato Creole sauce, served on Cuban bread"
+      },
+      {
+        "name": "Pan con Lechon",
+        "description": "Juicy Mojo - marinated roast Cuban pork served on Cuban bread, w/lettuce, tomatoes, and caramelized onions"
+      },
+      {
+        "name": "Pepito's Frita Cubana",
+        "description": "A blend of choice meat & chorizo grilled & served on Cuban bread with lettuce, tomatoes & julienne potatoes"
+      },
+      {
+        "name": "Hamburguesa",
+        "description": "Hamburger American style - All sandwiches are served with your choice of French fries or plantain chips"
+      }
+    ]
+  },
+  "Cuban Entrees": [
+    {
+      "name": "Picadillo Habanero",
+      "description": "Savory ground beef cooked with tomatoes, onions, garlic, bell peppers, cumin, bay leaves, oregano, olives, capers, and raisins"
+    },
+    {
+      "name": "Ropa Vieja",
+      "description": "Traditional Cuban shredded beef stewed with fresh tomatoes, green peppers, onions and red wine. Literally translated as \"old clothes\""
+    },
+    {
+      "name": "Churrasco",
+      "description": "Grilled skirt steak flavored with a tangy onion-garlic sauce"
+    },
+    {
+      "name": "Bistec Palomilla a la Plancha",
+      "description": "Grilled prime sirloin steak served with chopped onions and parsley"
+    },
+    {
+      "name": "Bistec Palomilla Empanizada",
+      "description": "Marinated and breaded top sirloin steak, fried and served with chopped onions and parsley"
+    },
+    {
+      "name": "Vaca Frita",
+      "description": "Flank Meat shredded and grilled with garlic, lime and onions"
+    },
+    {
+      "name": "Polla al Ajillo",
+      "description": "Half chicken marinated and roasted with garlic mojo glaze and caramelized onions"
+    },
+    {
+      "name": "Pechuga de Pollo a la Plancha",
+      "description": "Breast of chicken grilled with parsley, olive oil and garlic adobo"
+    },
+    {
+      "name": "Lechon Asado",
+      "description": "Traditional Cuban roasted pork marinated in cumin-mojo sauce"
+    },
+    {
+      "name": "Chuletas de Cerdo",
+      "description": "Pork Chops marinated in lime and garlic, grilled to perfection and topped with sautéed onions"
+    },
+    {
+      "name": "Completa de Caballo Grande",
+      "description": "Sample our 3 most popular Cuban dishes: Lechon Asado, Ropa Vieja, and Picadillo"
+    },
+    {
+      "name": "Completa Tradicional",
+      "description": "A traditional Cuban Combination of Lechon Asado and Tamel en hoja"
+    }
+  ],
+  "Featured Entrees": [
+    {
+      "name": "Rabirubia Frita Entera",
+      "description": "Fried whole yellowtail, marinated w/fresh key lime, garlic and onions"
+    },
+    {
+      "name": "Filete de Cherna Empanizada",
+      "description": "Grouper filet breaded and fried to perfection, served on a bed of lettuce and onions"
+    },
+    {
+      "name": "Mahi Mahi con Salsa de Camarones",
+      "description": "Fresh dolphin filet topped with a shrimp Cuban creole sauce"
+    },
+    {
+      "name": "Pescado del Dia",
+      "description": "Pepe’s selection of fresh fish in a new creation each day"
+    },
+    {
+      "name": "Zarzuela de Marisco",
+      "description": "A medley of seafood in a homemade Cuban Creole sauce"
+    },
+    {
+      "name": "Camarones Empanizado",
+      "description": "Lightly breaded shrimp fried and served with a great mustard/garlic sauce"
+    },
+    {
+      "name": "Camarones en Salsa Criolla",
+      "description": "Fresh shrimp in a homemade Cuban Creole sauce"
+    },
+    {
+      "name": "Camarones al Ajillo",
+      "description": "Shrimp sautéed in garlic, olive oil, lemon, and white wine"
+    }
+  ],
+  "Kids Menu": {
+    "note": "*Served with choice of french fries or plantain chips",
+    "items": [
+      {
+        "name": "Kid's Cuban Steak Platter",
+        "description": "Served with rice, beans & plantains"
+      },
+      {
+        "name": "Fried Shrimp*",
+        "description": ""
+      },
+      {
+        "name": "Chicken Fingers*",
+        "description": ""
+      },
+      {
+        "name": "Hamburger*",
+        "description": ""
+      },
+      {
+        "name": "Cheeseburger*",
+        "description": ""
+      }
+    ]
+  },
+  "Dessert Menu": {
+    "note": "*Please ask our server about the flavor of the week",
+    "items": [
+      {
+        "name": "Pudin de Guava",
+        "description": "Guava Bread Pudding"
+      },
+      {
+        "name": "Flan Casero",
+        "description": "Caramel Custard"
+      },
+      {
+        "name": "Torta de Limon",
+        "description": "Homemade Key Lime Pie"
+      },
+      {
+        "name": "Pastel de Chocolate",
+        "description": "Chocolate Thunder Cake"
+      },
+      {
+        "name": "Tres Leches",
+        "description": "A Three Milk Cake Sensation"
+      },
+      {
+        "name": "Flan de Coco",
+        "description": "Coconut Flan"
+      },
+      {
+        "name": "Helados de Frutas Tropical",
+        "description": "Tropical Fruit Ice Cream"
+      }
+    ]
+  }
+}
