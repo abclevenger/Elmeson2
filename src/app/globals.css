@@ -64,6 +64,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Global Heading Styles */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+}
+
 /* Accessibility: Focus visible styles for keyboard navigation */
 *:focus-visible {
   outline: 3px solid var(--primary);

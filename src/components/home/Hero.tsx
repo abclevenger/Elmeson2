@@ -23,7 +23,7 @@ export default function Hero() {
             </div>
 
             {/* Oval Overlay behind text */}
-            <div 
+            <div
                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[5] bg-black/60"
                 style={{
                     width: 'min(90vw, 800px)',
@@ -38,12 +38,7 @@ export default function Hero() {
                 <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white font-script drop-shadow-lg">
                     Authentic
                 </h1>
-                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white font-serif tracking-wider uppercase drop-shadow-md">
-                    CUBAN FOOD
-                </p>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 font-script drop-shadow-md">
-                    In Mallory Square, Key West
-                </p>
+
 
                 <div className="pt-6 sm:pt-8">
                     <Link
