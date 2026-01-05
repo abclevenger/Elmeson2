@@ -51,7 +51,7 @@ export default function PatioBarPage() {
             <div className="absolute inset-0 bg-black/40" />
           </div>
           <div className="relative z-10 text-center px-4">
-            <h1 className="text-5xl md:text-7xl font-bold text-white font-serif mb-4 tracking-wider uppercase drop-shadow-lg">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white font-serif mb-4 tracking-wider uppercase drop-shadow-lg">
               Patio Bar
             </h1>
             <div className="h-1.5 w-32 bg-secondary mx-auto my-6 shadow-lg" />

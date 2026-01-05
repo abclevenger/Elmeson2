@@ -58,7 +58,7 @@ export default function SunsetCelebrationPage() {
 
                 {/* Title */}
                 <div className="relative z-10 text-center px-4">
-                    <h1 className="text-5xl md:text-7xl font-bold text-white font-serif tracking-widest">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white font-serif tracking-widest">
                         SUNSET CELEBRATION
                     </h1>
                 </div>
