@@ -33,7 +33,7 @@ export default function PrivatePartiesSection() {
                     {/* Image Content */}
                     <div className="flex-1 relative h-[300px] sm:h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl order-1 md:order-2">
                         <Image
-                            src="/images/food_intro.webp"
+                            src="/images/2017/10/el-meson-restaurant-1-768x259.jpg"
                             alt="Private party dining room setup at El Meson de Pepe"
                             fill
                             className="object-cover hover:scale-105 transition-transform duration-700"
