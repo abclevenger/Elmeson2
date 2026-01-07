@@ -178,7 +178,7 @@ export default function PrivatePartiesPage() {
                             <p className="text-gray-600 text-lg max-w-2xl mx-auto font-light">Authentic Cuban buffets for groups larger than 25 guests.</p>
                         </div>
 
-                        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
                             {/* Buffet Option 1 */}
                             <div className="bg-white rounded-[3rem] p-10 shadow-xl border border-gray-100 flex flex-col hover:shadow-primary/5 transition-all group overflow-hidden relative">
                                 <div className="absolute top-0 right-0 p-6 text-primary/5 font-serif text-7xl pointer-events-none">01</div>
@@ -262,9 +262,55 @@ export default function PrivatePartiesPage() {
                                 </div>
                             </div>
 
+                            {/* Platinum Buffet Menu */}
+                            <div className="bg-white rounded-[3rem] p-10 shadow-2xl border-2 border-[#D4AF37] flex flex-col hover:shadow-primary/5 transition-all group overflow-hidden relative">
+                                <div className="absolute top-0 right-0 p-6 text-primary/5 font-serif text-7xl pointer-events-none">03</div>
+                                <h3 className="text-2xl font-bold text-primary font-serif mb-4 group-hover:text-secondary transition-colors uppercase">EL MESON’S PLATINUM buffet MENU</h3>
+                                <div className="flex items-baseline mb-8 pb-6 border-b border-gray-50">
+                                    <span className="text-4xl font-bold text-primary font-serif">$100.00</span>
+                                    <span className="text-gray-500 ml-2 text-xs font-medium">per person plus gratuity and tax</span>
+                                </div>
+
+                                <div className="space-y-6 grow">
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-3">Appetizers (served family style)</h4>
+                                        <p className="text-sm text-gray-700 font-bold italic">Choose four</p>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-3">Soups (served table side)</h4>
+                                        <p className="text-sm text-gray-700 font-bold italic">Choose one</p>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-3">Salad (served table side)</h4>
+                                        <p className="text-sm text-gray-700 font-bold italic">Choose one</p>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-3">Entrees (on buffet)</h4>
+                                        <p className="text-sm text-gray-700 font-bold italic">Choose four</p>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-3">Sides (on buffet)</h4>
+                                        <p className="text-sm text-gray-700 font-bold italic">Choose three</p>
+                                    </section>
+
+                                    <section>
+                                        <h4 className="text-secondary uppercase tracking-widest text-[10px] font-bold mb-3">Desserts</h4>
+                                        <p className="text-sm text-gray-700 font-bold italic">Choose two</p>
+                                    </section>
+                                </div>
+
+                                <div className="mt-8 pt-6 border-t border-gray-100 italic text-[10px] text-primary/60 font-medium">
+                                    Cuban bread, iced tea, fountain drinks, and American coffee included.
+                                </div>
+                            </div>
+
                             {/* Buffet Option 2 */}
                             <div className="bg-white rounded-[3rem] p-10 shadow-xl border border-gray-100 flex flex-col hover:shadow-primary/5 transition-all group overflow-hidden relative">
-                                <div className="absolute top-0 right-0 p-6 text-primary/5 font-serif text-7xl pointer-events-none">03</div>
+                                <div className="absolute top-0 right-0 p-6 text-primary/5 font-serif text-7xl pointer-events-none">04</div>
                                 <h3 className="text-2xl font-bold text-primary font-serif mb-4 group-hover:text-secondary transition-colors uppercase">Buffet Option 2</h3>
                                 <div className="flex items-baseline mb-8 pb-6 border-b border-gray-50">
                                     <span className="text-4xl font-bold text-primary font-serif">$75.00</span>
@@ -306,95 +352,6 @@ export default function PrivatePartiesPage() {
                     </div>
                 </section>
 
-                {/* Plated Menus */}
-                <section className="py-24 px-4 bg-gray-50">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-5xl font-bold text-primary font-serif mb-4 uppercase">Premium Plated Menus</h2>
-                            <div className="h-1 w-24 bg-secondary mx-auto mb-6" />
-                            <p className="text-gray-600 max-w-2xl mx-auto font-light">
-                                Elegant seated dining experiences for groups under 25 guests.
-                            </p>
-                        </div>
-
-                        <div className="grid lg:grid-cols-3 gap-8 mb-20">
-                            {[
-                                {
-                                    name: "Silver Plated",
-                                    price: "$35.00",
-                                    items: ["2 Appetizers", "Green Salad", "3 Entrees", "1 Dessert"],
-                                    desc: "Conch Fritters, Mollete, Pollo al Meson..."
-                                },
-                                {
-                                    name: "Golden Plated",
-                                    price: "$48.00",
-                                    items: ["2 Appetizers", "Salad Choice", "3 Entrees", "2 Desserts"],
-                                    desc: "Coconut Shrimp, Grilled Grouper, Guava Pudding...",
-                                    premium: true
-                                },
-                                {
-                                    name: "Platinum Plated",
-                                    price: "$77.00",
-                                    items: ["3 Appetizers", "Soup & Salad", "3 Entrees", "2 Desserts"],
-                                    desc: "Pepe's Cuban Nachos, Beef Paella, Seafood Combo..."
-                                }
-                            ].map((pkg, idx) => (
-                                <div key={idx} className={`rounded-3xl p-10 flex flex-col transition-all group ${pkg.premium ? 'bg-white border-2 border-secondary shadow-2xl scale-105 z-10' : 'bg-white border border-gray-100 hover:border-secondary shadow-lg'}`}>
-                                    <h3 className="text-2xl font-bold font-serif mb-2 text-primary">{pkg.name}</h3>
-                                    <div className="mb-8">
-                                        <span className="text-4xl font-bold font-serif text-primary">{pkg.price}</span>
-                                        <span className="text-xs ml-2 text-gray-400">per person</span>
-                                    </div>
-                                    <ul className="space-y-4 grow mb-10">
-                                        {pkg.items.map((item, i) => (
-                                            <li key={i} className="flex items-center gap-3 text-sm font-medium text-gray-700">
-                                                <Utensils className="w-4 h-4 text-secondary" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <p className="text-xs italic leading-relaxed border-t pt-6 text-gray-500 border-gray-100">
-                                        {pkg.desc}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Plated Item Details */}
-                        <div className="bg-white rounded-[3rem] p-12 shadow-xl border border-gray-100">
-                            <h3 className="text-3xl font-bold text-primary font-serif mb-12 text-center uppercase tracking-widest">Menu Item Highlights</h3>
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
-                                <div>
-                                    <h4 className="text-secondary font-bold uppercase tracking-widest text-xs mb-6 border-b border-secondary/20 pb-2">Signature Appetizers</h4>
-                                    <ul className="space-y-4 text-sm text-gray-700 font-medium">
-                                        <li>Conch Fritters & Molletes</li>
-                                        <li>Tostones Rellenos (Stuffed Plantains)</li>
-                                        <li>Garlic & Coconut Shrimp</li>
-                                        <li className="text-primary font-bold italic">Pepe&apos;s Cuban Nachos (Platinum)</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 className="text-secondary font-bold uppercase tracking-widest text-xs mb-6 border-b border-secondary/20 pb-2">House Entrees</h4>
-                                    <ul className="space-y-4 text-sm text-gray-700 font-medium">
-                                        <li>Pollo al Meson (House Chicken)</li>
-                                        <li>Baby Churrasco & Ropa Vieja</li>
-                                        <li>Grilled Grouper / Seafood Combo</li>
-                                        <li className="text-primary font-bold italic">Beef Paella a la Cubana</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 className="text-secondary font-bold uppercase tracking-widest text-xs mb-6 border-b border-secondary/20 pb-2">Homemade Desserts</h4>
-                                    <ul className="space-y-4 text-sm text-gray-700 font-medium">
-                                        <li>Classic Flan Casero</li>
-                                        <li>Key Lime Pie (Traditional)</li>
-                                        <li>Guava Bread Pudding</li>
-                                        <li>Tres Leches Cake</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
                 {/* Final Closing */}
                 <section className="py-24 px-4 text-center bg-white relative">
