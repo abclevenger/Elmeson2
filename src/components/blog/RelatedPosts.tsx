@@ -1,15 +1,59 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, ArrowRight } from "lucide-react";
-import { findRelatedPosts, getFeaturedImage, calculateReadingTime } from "@/lib/blog-utils";
-import type { BlogPost } from "@/lib/blog-utils";
+import { calculateReadingTime, findRelatedPostsFromList, getFeaturedImage } from "@/lib/blog-utils";
+import type { RelatedCandidatePost } from "@/lib/blog-utils";
+import { supabase } from "@/lib/supabase";
+import blogPostsData from "@/data/blog-posts.json";
 
 interface RelatedPostsProps {
   currentPostSlug: string;
 }
 
-export default function RelatedPosts({ currentPostSlug }: RelatedPostsProps) {
-  const relatedPosts = findRelatedPosts(currentPostSlug, 4);
+export default async function RelatedPosts({ currentPostSlug }: RelatedPostsProps) {
+  // Build candidate list from Supabase (source of truth) + JSON (fallback)
+  let dbPosts: RelatedCandidatePost[] = [];
+  try {
+    const { data, error } = await supabase
+      .from("posts")
+      .select("id,slug,title,excerpt,content,date,post_status,featured_image")
+      .eq("post_status", "publish")
+      .order("date", { ascending: false });
+
+    if (!error && data) {
+      dbPosts = (data as any[]).map((p) => ({
+        id: p.id,
+        slug: p.slug,
+        title: p.title,
+        excerpt: p.excerpt,
+        content: p.content,
+        date: p.date,
+        postStatus: p.post_status,
+        featured_image: p.featured_image,
+      }));
+    }
+  } catch {
+    // ignore and fall back to JSON-only
+  }
+
+  const jsonPosts: RelatedCandidatePost[] = blogPostsData
+    .filter((p) => p.slug && p.postStatus === "publish")
+    .map((p) => ({
+      id: p.id,
+      slug: p.slug,
+      title: p.title,
+      excerpt: p.excerpt,
+      content: p.content,
+      date: p.date,
+      postStatus: p.postStatus,
+    }));
+
+  // Merge by slug (DB wins)
+  const bySlug = new Map<string, RelatedCandidatePost>();
+  for (const p of jsonPosts) bySlug.set(p.slug, p);
+  for (const p of dbPosts) bySlug.set(p.slug, p);
+
+  const relatedPosts = findRelatedPostsFromList(Array.from(bySlug.values()), currentPostSlug, 4);
 
   if (relatedPosts.length === 0) {
     return null;

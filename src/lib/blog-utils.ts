@@ -47,15 +47,41 @@ export function extractFirstImageFromContent(content: string): string | null {
 /**
  * Get featured image for a blog post, extracting from content if not available
  */
-export function getFeaturedImage(post: BlogPost): string | null {
+export function getFeaturedImage(post: { content: string } & Record<string, any>): string | null {
   // Check if post has featuredImage property (if we add it later)
   if ((post as any).featuredImage) {
     return `/images/${(post as any).featuredImage}`;
   }
 
+  // Supabase posts use snake_case `featured_image` and may be a full URL
+  const featuredImage = (post as any).featured_image as string | undefined;
+  if (featuredImage) {
+    // If it's already a full URL (e.g., storage.googleapis.com), use as-is
+    if (featuredImage.startsWith("http://") || featuredImage.startsWith("https://")) {
+      return featuredImage;
+    }
+    // If it's a local path, use it directly
+    if (featuredImage.startsWith("/")) {
+      return featuredImage;
+    }
+    // Otherwise treat it as a filename under /images
+    return `/images/${featuredImage}`;
+  }
+
   // Extract from content
   return extractFirstImageFromContent(post.content);
 }
+
+export type RelatedCandidatePost = {
+  id: string | number;
+  slug: string;
+  title: string;
+  excerpt?: string | null;
+  content: string;
+  date: string;
+  postStatus?: string;
+  featured_image?: string | null;
+};
 
 /**
  * Convert WordPress URL to Next.js route
@@ -168,6 +194,60 @@ export function findRelatedPosts(currentPostSlug: string, limit: number = 4): Bl
   }
 
   return scoredPosts;
+}
+
+/**
+ * Find related posts from an arbitrary list (e.g., Supabase + JSON merge)
+ */
+export function findRelatedPostsFromList(
+  posts: RelatedCandidatePost[],
+  currentPostSlug: string,
+  limit: number = 4
+): RelatedCandidatePost[] {
+  const currentPost = posts.find((p) => p.slug === currentPostSlug);
+  if (!currentPost) return [];
+
+  const currentKeywords = extractKeywords(
+    `${currentPost.title} ${currentPost.excerpt ?? ""} ${currentPost.content}`
+  );
+
+  const isPublish = (p: RelatedCandidatePost) =>
+    (p.postStatus ?? "publish") === "publish";
+
+  const scored = posts
+    .filter((p) => p.slug !== currentPostSlug && isPublish(p))
+    .map((p) => {
+      const postText = `${p.title} ${p.excerpt ?? ""} ${p.content}`;
+      const postKeywords = extractKeywords(postText);
+      const matches = currentKeywords.filter((kw) => postKeywords.includes(kw)).length;
+
+      const titleWords = p.title.toLowerCase().split(/\s+/);
+      const titleMatches = currentKeywords.filter((kw) =>
+        titleWords.some((word) => word.includes(kw) || kw.includes(word))
+      ).length;
+
+      return { post: p, score: matches + titleMatches * 2 };
+    })
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((x) => x.post);
+
+  if (scored.length < limit) {
+    const recent = posts
+      .filter(
+        (p) =>
+          p.slug !== currentPostSlug &&
+          isPublish(p) &&
+          !scored.some((sp) => sp.slug === p.slug)
+      )
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0, limit - scored.length);
+
+    return [...scored, ...recent].slice(0, limit);
+  }
+
+  return scored;
 }
 
 /**
