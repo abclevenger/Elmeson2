@@ -5,6 +5,10 @@ import BlogListingClient from "@/components/blog/BlogListingClient";
 import { supabase } from "@/lib/supabase";
 import blogPostsData from "@/data/blog-posts.json";
 
+// Ensure production reflects newly published posts without requiring a redeploy.
+// Vercel will revalidate this page periodically.
+export const revalidate = 60; // seconds
+
 export const metadata: Metadata = {
   title: "Pepe's Key West Blog - Stories & Guides",
   description: "Read stories, guides, and insights from El Meson de Pepe. Discover the best Cuban experiences, Key West dining, and local culture.",

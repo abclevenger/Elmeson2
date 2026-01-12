@@ -2,6 +2,9 @@ import { MetadataRoute } from 'next';
 import blogPostsData from '@/data/blog-posts.json';
 import { supabase } from '@/lib/supabase';
 
+// Keep sitemap fresh for SEO without requiring a redeploy.
+export const revalidate = 3600; // 1 hour
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.elmesondepepe.com';
 
