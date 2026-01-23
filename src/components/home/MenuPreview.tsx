@@ -4,17 +4,17 @@ const FEATURED_ITEMS = [
     {
         name: "Ropa Vieja",
         description: "Shredded beef stewed in a tomato base sauce with onions, peppers, and authentic spices.",
-        price: "$24",
+        price: "$28",
     },
     {
         name: "Lechón Asado",
         description: "Traditional roasted pork marinated in our signature mojo criollo sauce.",
-        price: "$22",
+        price: "$26",
     },
     {
         name: "Picadillo a la Habanera",
         description: "Ground beef cooked with olives, raisins, and spices in a savory tomato sauce.",
-        price: "$20",
+        price: "$24",
     },
 ];
 
