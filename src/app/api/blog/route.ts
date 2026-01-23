@@ -93,12 +93,12 @@ export async function PUT(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
     try {
         const user = await requireAuthor();
-        const { searchParams } = new URL(req.url);
-        const id = searchParams.get("id");
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-        if (!id) {
-            return NextResponse.json({ message: "ID is required" }, { status: 400 });
-        }
+    if (!id) {
+        return NextResponse.json({ message: "ID is required" }, { status: 400 });
+    }
 
         const { error } = await supabase
             .from('posts')

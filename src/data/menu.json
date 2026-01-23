@@ -10,32 +10,32 @@
         "description": "Corn based appetizer wrapped in corn husk, and filled with roast pork, on a bed of plantain chips"
       },
       {
-        "name": "Masitas de Cerdo Frita",
-        "description": "Fresh pork cubes marinated and golden fried, served with onions and parsley"
-      },
-      {
         "name": "Alitas de Pollo",
         "description": "Marinated fried chicken wings in garlic mojo sauce"
-      },
-      {
-        "name": "Vieiras al Ajillo",
-        "description": "Scallops sautéed in garlic, olive oil, lemon and white wine"
       },
       {
         "name": "Calamares Empanizados con Salsa de Sofrito",
         "description": "Crunchy fried squid served with tangy Creole sauce"
       },
       {
-        "name": "Mollete a la Pancho",
-        "description": "Cuban bread stuffed w/ picadillo, then breaded and fried – A local favorite"
-      },
-      {
-        "name": "Gambas a la Plancha",
-        "description": "Tasty grilled jumbo shrimp in their natural shell. Suck, peel and eat them the \"Cuban way\""
-      },
-      {
         "name": "Antojitos",
         "description": "Fried Cheese and Chorizo over a bed of plantain chips"
+      },
+      {
+        "name": "Combinación de Croquetas",
+        "description": "Assortment of traditional Cuban croquettes"
+      },
+      {
+        "name": "Papas Rellenas",
+        "description": "Stuffed potato balls, fried golden"
+      },
+      {
+        "name": "Empanadas de Carne o Pollo",
+        "description": "Cuban turnovers filled with seasoned beef or chicken"
+      },
+      {
+        "name": "Conga Combo Platter",
+        "description": "A sampler platter of our favorite Cuban appetizers"
       }
     ],
     "Featured": [
@@ -53,7 +53,7 @@
       },
       {
         "name": "Tostones Rellenos",
-        "description": "Four stuffed green plantains, filled with Roast Pork, Picadillo, Ropa Vieja, and Seafood Creole"
+        "description": "Four stuffed green plantains, filled with Pork, Picadillo, Ropa Vieja, and Rice and Beans"
       },
       {
         "name": "Camarones de Coco",
@@ -164,10 +164,6 @@
         "description": "Juicy Mojo - marinated roast Cuban pork served on Cuban bread, w/lettuce, tomatoes, and caramelized onions"
       },
       {
-        "name": "Pepito's Frita Cubana",
-        "description": "A blend of choice meat & chorizo grilled & served on Cuban bread with lettuce, tomatoes & julienne potatoes"
-      },
-      {
         "name": "Hamburguesa",
         "description": "Hamburger American style - All sandwiches are served with your choice of French fries or plantain chips"
       }
@@ -176,11 +172,13 @@
   "Cuban Entrees": [
     {
       "name": "Picadillo Habanero",
-      "description": "Savory ground beef cooked with tomatoes, onions, garlic, bell peppers, cumin, bay leaves, oregano, olives, capers, and raisins"
+      "description": "Savory ground beef cooked with tomatoes, onions, garlic, bell peppers, cumin, bay leaves, oregano, olives, capers, and raisins",
+      "price": "$24"
     },
     {
       "name": "Ropa Vieja",
-      "description": "Traditional Cuban shredded beef stewed with fresh tomatoes, green peppers, onions and red wine. Literally translated as \"old clothes\""
+      "description": "Traditional Cuban shredded beef stewed with fresh tomatoes, green peppers, onions and red wine. Literally translated as \"old clothes\"",
+      "price": "$28"
     },
     {
       "name": "Churrasco",
@@ -208,7 +206,8 @@
     },
     {
       "name": "Lechon Asado",
-      "description": "Traditional Cuban roasted pork marinated in cumin-mojo sauce"
+      "description": "Traditional Cuban roasted pork marinated in cumin-mojo sauce",
+      "price": "$26"
     },
     {
       "name": "Chuletas de Cerdo",
@@ -308,10 +307,6 @@
       {
         "name": "Flan de Coco",
         "description": "Coconut Flan"
-      },
-      {
-        "name": "Helados de Frutas Tropical",
-        "description": "Tropical Fruit Ice Cream"
       }
     ]
   }

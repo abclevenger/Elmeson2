@@ -70,9 +70,11 @@ export default function Footer() {
                         <h4 className="text-white font-serif uppercase tracking-widest text-sm font-bold">Explore</h4>
                         <ul className="space-y-3 text-sm">
                             <li><Link href="/menu" className="text-white/80 hover:text-white transition-colors inline-block hover:translate-x-1 duration-200">Our Menu</Link></li>
-                            <li><Link href="/parties" className="text-white/80 hover:text-white transition-colors inline-block hover:translate-x-1 duration-200">Private Parties</Link></li>
                             <li><Link href="/story" className="text-white/80 hover:text-white transition-colors inline-block hover:translate-x-1 duration-200">Our Story</Link></li>
-                            <li><Link href="/shop" className="text-white/80 hover:text-white transition-colors inline-block hover:translate-x-1 duration-200">Mercado</Link></li>
+                            <li><Link href="/parties" className="text-white/80 hover:text-white transition-colors inline-block hover:translate-x-1 duration-200">Private Parties</Link></li>
+                            <li><Link href="/sunset" className="text-white/80 hover:text-white transition-colors inline-block hover:translate-x-1 duration-200">Sunset Celebration</Link></li>
+                            <li><Link href="/patio" className="text-white/80 hover:text-white transition-colors inline-block hover:translate-x-1 duration-200">Patio Bar</Link></li>
+                            <li><Link href="/contact" className="text-white/80 hover:text-white transition-colors inline-block hover:translate-x-1 duration-200">Contact Us</Link></li>
                         </ul>
                     </div>
 

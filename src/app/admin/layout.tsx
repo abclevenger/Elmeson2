@@ -41,7 +41,7 @@ export default async function AdminLayout({
                             <span className="text-sm text-gray-600">Logged in as {user.email}</span>
                             <form action={signOut}>
                                 <button type="submit" className="text-sm font-medium text-red-600 hover:text-red-700">
-                                    Logout
+                                Logout
                                 </button>
                             </form>
                         </div>

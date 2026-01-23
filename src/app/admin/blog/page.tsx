@@ -5,7 +5,7 @@ import AdminBlogPageClient from "./page-client";
 export default async function AdminBlogPage() {
     await requireAuthor();
     const supabase = await createClient();
-    
+
     // Fetch all posts sorted by date
     let posts: any[] = [];
     try {

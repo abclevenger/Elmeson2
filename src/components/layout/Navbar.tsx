@@ -4,9 +4,11 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Facebook, Instagram, ChevronDown, Settings, Users, Link as LinkIcon, LogOut } from "lucide-react";
+import { Menu, X, Facebook, Instagram, ChevronDown, Settings, Users, Link as LinkIcon, LogOut, FileText } from "lucide-react";
 import { createClient } from "@/lib/supabase-browser";
 import { useRouter } from "next/navigation";
+import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/lib/database.types";
 
 const NAV_ITEMS = [
     { name: "Home", href: "/" },
@@ -34,36 +36,77 @@ export default function Navbar() {
     const [userEmail, setUserEmail] = useState<string | null>(null);
     const pathname = usePathname();
     const router = useRouter();
-    const supabase = createClient();
+    
+    // Only create Supabase client if environment variables are available
+    let supabase: SupabaseClient<Database> | null = null;
+    try {
+        supabase = createClient();
+    } catch (error) {
+        console.error('Failed to initialize Supabase client:', error);
+    }
     
     // Check if user is admin
     useEffect(() => {
+        if (!supabase) return;
+        
         const checkAdmin = async () => {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (user) {
-                const { data: profile } = await supabase
-                    .from('profiles')
-                    .select('role, email')
-                    .eq('id', user.id)
-                    .single();
-                
-                if (profile && profile.role === 'admin') {
-                    setIsAdmin(true);
-                    setUserEmail(profile.email);
+            try {
+                // First check if there's a session before calling getUser
+                const { data: { session } } = await supabase.auth.getSession();
+                if (!session) {
+                    // No session, user is not logged in - this is normal, not an error
+                    setIsAdmin(false);
+                    setUserEmail(null);
+                    return;
                 }
+                
+                const { data: { user }, error: userError } = await supabase.auth.getUser();
+                if (userError) {
+                    console.error('Error getting user:', userError);
+                    return;
+                }
+                if (user) {
+                    const { data: profile, error: profileError } = await supabase
+                        .from('profiles')
+                        .select('role, email')
+                        .eq('id', user.id)
+                        .single();
+                    
+                    if (profileError) {
+                        console.error('Error fetching profile:', profileError);
+                        return;
+                    }
+                    
+                    if (profile && profile.role === 'admin') {
+                        setIsAdmin(true);
+                        setUserEmail(profile.email || user.email || null);
+                    }
+                }
+            } catch (error) {
+                console.error('Error in checkAdmin:', error);
             }
         };
         checkAdmin();
     }, [supabase, pathname]);
 
     const handleLogout = async () => {
-        await supabase.auth.signOut();
-        setIsAdmin(false);
-        setUserEmail(null);
-        router.push('/');
-        router.refresh();
+        if (!supabase) return;
+        
+        try {
+            const { error } = await supabase.auth.signOut();
+            if (error) {
+                console.error('Error signing out:', error);
+                return;
+            }
+            setIsAdmin(false);
+            setUserEmail(null);
+            router.push('/');
+            router.refresh();
+        } catch (error) {
+            console.error('Error in handleLogout:', error);
+        }
     };
-
+    
     // Determine if navbar should be transparent (only on home page initially)
     // Default to transparent on home page until scroll is detected
     const isTransparent = pathname === "/" && !isScrolled && !isAdmin;
@@ -303,16 +346,15 @@ export default function Navbar() {
                         <div className="hidden md:flex items-center space-x-6">
                             <Link 
                                 href="/admin/blog" 
-                                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                                className="flex items-center space-x-1 text-sm font-medium text-gray-700 hover:text-primary transition-colors"
                             >
-                                Posts
+                                <FileText size={18} />
+                                <span>Posts</span>
                             </Link>
-                            <Link 
-                                href="/admin/blog/new" 
-                                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
-                            >
-                                New Post
-                            </Link>
+                        </div>
+
+                        {/* Right Side: Settings & User Info */}
+                        <div className="hidden md:flex items-center space-x-4">
                             <div 
                                 className="relative group"
                                 onMouseEnter={() => setDropdownOpen('settings')}
@@ -342,22 +384,19 @@ export default function Navbar() {
                                                 <LinkIcon size={18} />
                                                 <span>Integrations</span>
                                             </Link>
+                                            <div className="border-t border-gray-200 my-1"></div>
+                                            <button
+                                                onClick={handleLogout}
+                                                className="flex items-center space-x-2 w-full px-4 py-3 text-sm text-red-600 hover:bg-gray-50 hover:text-red-700 transition-colors"
+                                            >
+                                                <LogOut size={18} />
+                                                <span>Logout</span>
+                                            </button>
                                         </div>
                                     </div>
                                 )}
                             </div>
-                        </div>
-
-                        {/* User Info & Logout */}
-                        <div className="flex items-center space-x-4">
-                            <span className="text-sm text-gray-600 hidden sm:inline">{userEmail}</span>
-                            <button
-                                onClick={handleLogout}
-                                className="flex items-center space-x-1 text-sm font-medium text-red-600 hover:text-red-700 transition-colors"
-                            >
-                                <LogOut size={18} />
-                                <span className="hidden sm:inline">Logout</span>
-                            </button>
+                            <span className="text-sm text-gray-600">{userEmail}</span>
                         </div>
 
                         {/* Mobile menu button */}
@@ -385,17 +424,11 @@ export default function Navbar() {
                         <div className="px-4 py-4 space-y-3">
                             <Link
                                 href="/admin/blog"
-                                className="block px-4 py-2 text-gray-700 hover:text-primary rounded-md"
+                                className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:text-primary rounded-md"
                                 onClick={() => setIsOpen(false)}
                             >
-                                Posts
-                            </Link>
-                            <Link
-                                href="/admin/blog/new"
-                                className="block px-4 py-2 text-gray-700 hover:text-primary rounded-md"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                New Post
+                                <FileText size={18} />
+                                <span>Posts</span>
                             </Link>
                             <div className="border-t border-gray-200 pt-3">
                                 <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
@@ -417,9 +450,7 @@ export default function Navbar() {
                                     <LinkIcon size={18} />
                                     <span>Integrations</span>
                                 </Link>
-                            </div>
-                            <div className="border-t border-gray-200 pt-3">
-                                <div className="px-4 py-2 text-sm text-gray-600">{userEmail}</div>
+                                <div className="border-t border-gray-200 my-1"></div>
                                 <button
                                     onClick={() => {
                                         handleLogout();
@@ -430,6 +461,9 @@ export default function Navbar() {
                                     <LogOut size={18} />
                                     <span>Logout</span>
                                 </button>
+                            </div>
+                            <div className="border-t border-gray-200 pt-3">
+                                <div className="px-4 py-2 text-sm text-gray-600">{userEmail}</div>
                             </div>
                         </div>
                     </div>
