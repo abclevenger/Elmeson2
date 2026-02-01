@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase-browser";
 import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
@@ -35,16 +36,14 @@ export default function InviteCompletePage() {
     });
 
     useEffect(() => {
-        // Check if we have the token in the URL
+        if (!supabase) return;
         const token = searchParams.get("token");
         const type = searchParams.get("type");
         const tokenHash = searchParams.get("token_hash");
-        
         if ((token || tokenHash) && (type === "invite" || type === "recovery")) {
-            // Exchange the token for a session
             supabase.auth.verifyOtp({
-                token_hash: tokenHash || token || '',
-                type: (type as any) || "invite",
+                token_hash: tokenHash || token || "",
+                type: (type as "invite" | "recovery") || "invite",
             }).then(({ error }) => {
                 if (error) {
                     toast.error("Invalid or expired invitation link");
@@ -52,9 +51,10 @@ export default function InviteCompletePage() {
                 }
             });
         }
-    }, [searchParams, supabase.auth, router]);
+    }, [searchParams, supabase, router]);
 
     const onSubmit = async (data: PasswordValues) => {
+        if (!supabase) return;
         setIsLoading(true);
         try {
             const { error } = await supabase.auth.updateUser({
@@ -75,6 +75,25 @@ export default function InviteCompletePage() {
             setIsLoading(false);
         }
     };
+
+    if (!supabase) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-md w-full space-y-6 text-center">
+                    <h2 className="text-2xl font-extrabold text-gray-900">Set Your Password</h2>
+                    <p className="text-sm text-gray-600">
+                        Account setup is not configured. Supabase environment variables are missing.
+                    </p>
+                    <Link
+                        href="/"
+                        className="inline-block text-primary hover:underline font-medium"
+                    >
+                        Return home
+                    </Link>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">

@@ -7,6 +7,7 @@ import { BreadcrumbSchema, ArticleSchema } from "@/lib/schema";
 import { convertWordPressContent } from "@/lib/wordpress-content";
 import { getFeaturedImage, calculateReadingTime } from "@/lib/blog-utils";
 import RelatedPosts from "@/components/blog/RelatedPosts";
+import ShareButtons from "@/components/blog/ShareButtons";
 import { supabase } from "@/lib/supabase";
 import blogPostsData from "@/data/blog-posts.json";
 import { requireAuthor } from "@/lib/auth-helpers";
@@ -157,7 +158,7 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
             <div className="relative h-96 w-full rounded-xl overflow-hidden shadow-2xl mb-8">
               <Image
                 src={featuredImage}
-                alt={post.title}
+                alt={`${post.title} — El Mesón de Pepe, Key West Cuban American restaurant`}
                 fill
                 className="object-cover"
                 priority
@@ -190,6 +191,11 @@ export default async function BlogPostPage({ params, searchParams }: BlogPostPag
           <article className="prose prose-lg max-w-none text-gray-700 prose-headings:font-bold prose-headings:text-primary prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:font-semibold prose-img:rounded-lg prose-img:shadow-lg">
             {content}
           </article>
+
+          {/* Share */}
+          <div className="mt-10 pt-8 border-t border-gray-200">
+            <ShareButtons title={post.title} slug={slug} />
+          </div>
 
           {/* Related Posts */}
           <RelatedPosts currentPostSlug={post.slug} />

@@ -24,7 +24,7 @@ export function RestaurantSchema() {
     "@id": "https://www.elmesondepepe.com/#restaurant",
     name: "El Meson de Pepe",
     image: "https://www.elmesondepepe.com/images/el-meson-de-pepe-key-west-logo.webp",
-    description: "Authentic Cuban restaurant in Mallory Square, Key West. Family owned and operated since 1984, serving traditional Cuban cuisine with live Salsa music.",
+    description: "A living museum of Cuban American heritage in Key West. El Mesón de Pepe guards Cuban American Conch history at Mallory Square—cuisine as cultural expression, since 1985.",
     address: {
       "@type": "PostalAddress",
       streetAddress: "410 Wall Street",
@@ -70,10 +70,10 @@ export function RestaurantSchema() {
       "https://www.linkedin.com/company/el-meson-de-pepe",
       "https://www.tiktok.com/@elmesondepepe",
     ],
-    foundingDate: "1984",
+    foundingDate: "1985",
     founder: {
       "@type": "Person",
-      name: "Pepe Diaz",
+      name: "Jose \"Pepe\" M. Diaz",
     },
   };
 
@@ -89,7 +89,7 @@ export function OrganizationSchema() {
     name: "El Meson de Pepe",
     url: "https://www.elmesondepepe.com",
     logo: "https://www.elmesondepepe.com/images/el-meson-de-pepe-key-west-logo.webp",
-    description: "Authentic Cuban restaurant in Key West, Florida, serving traditional Cuban cuisine since 1984.",
+    description: "Living museum of Cuban American heritage in Key West. Guardian of Cuban American Conch history at Mallory Square; traditional Cuban cuisine as cultural continuity.",
     address: {
       "@type": "PostalAddress",
       streetAddress: "410 Wall Street",

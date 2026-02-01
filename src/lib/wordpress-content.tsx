@@ -164,16 +164,18 @@ export function convertWordPressContent(content: string, defaultAlt: string = ''
 
           const convertedSrc = convertImagePath(src);
 
-          // If it's an external URL, use regular img tag
+          // If it's an external URL, use regular img tag (Next/Image doesn't support remote by default)
           if (convertedSrc.startsWith('http://') || convertedSrc.startsWith('https://')) {
             return (
               <img
                 src={convertedSrc}
                 alt={alt}
-                width={width}
-                height={height}
+                width={width ?? 800}
+                height={height ?? 450}
                 className={className}
                 loading="lazy"
+                decoding="async"
+                sizes="(max-width: 768px) 100vw, 700px"
               />
             );
           }

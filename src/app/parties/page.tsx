@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Users, Utensils, Music, Wine, Phone, Mail } from "lucide-react";
 import { BreadcrumbSchema } from "@/lib/schema";
@@ -38,7 +39,7 @@ export default function PrivatePartiesPage() {
                 {/* Hero Section */}
                 <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0">
-                        <div className="absolute inset-0 bg-[url('/images/key-west-restaurant-private-parties-2048x751.jpg')] bg-cover bg-center" />
+                        <div className="absolute inset-0 bg-[url('/images/key-west-restaurant-private-parties.png')] bg-cover bg-center" />
                         <div className="absolute inset-0 bg-black/50" />
                     </div>
                     <div className="relative z-10 text-center px-4">
@@ -65,6 +66,20 @@ export default function PrivatePartiesPage() {
                             </p>
                             <div className="bg-secondary/5 border-l-4 border-secondary p-6 italic text-gray-700">
                                 &ldquo;Below are sample menus that should help you select the options most suited to your tastes. Please feel free to select options from any of the menus and we will provide a custom quote for your group.&rdquo;
+                            </div>
+                            <p className="pt-4">
+                                <Link href="/parties/survey" className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full hover:bg-secondary transition-all shadow-md uppercase tracking-wider text-sm font-bold">
+                                    Fill out our Private Events Survey
+                                </Link>
+                            </p>
+                            <div className="relative aspect-[4/5] w-full max-w-md rounded-lg overflow-hidden border border-gray-200 mt-8 shadow-lg">
+                                <Image
+                                    src="/images/wedding-couple-el-meson.png"
+                                    alt="Wedding couple at El Mesón de Pepe — Cuban cuisine and celebrations in Mallory Square"
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 1024px) 100vw, 448px"
+                                />
                             </div>
                         </div>
                         <div className="bg-gray-50 p-10 rounded-3xl border border-gray-100 shadow-xl text-center relative overflow-hidden group">

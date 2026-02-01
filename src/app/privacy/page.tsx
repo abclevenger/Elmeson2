@@ -36,7 +36,7 @@ export default function PrivacyPage() {
                 {/* Hero Section */}
                 <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0">
-                        <div className="absolute inset-0 bg-[url('/images/key-west-cuban-food.webp')] bg-cover bg-center" />
+                        <div className="absolute inset-0 bg-[url('/images/key-west-cuban-food.png')] bg-cover bg-center" />
                         <div className="absolute inset-0 bg-black/50" />
                     </div>
                     <div className="relative z-10 text-center px-4">

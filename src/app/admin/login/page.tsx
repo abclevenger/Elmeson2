@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -30,6 +31,7 @@ export default function LoginPage() {
     });
 
     const onSubmit = async (data: LoginValues) => {
+        if (!supabase) return;
         setIsLoading(true);
         try {
             const { data: authData, error } = await supabase.auth.signInWithPassword({
@@ -50,6 +52,25 @@ export default function LoginPage() {
             setIsLoading(false);
         }
     };
+
+    if (!supabase) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-md w-full space-y-6 text-center">
+                    <h2 className="text-2xl font-extrabold text-gray-900">Admin Login</h2>
+                    <p className="text-sm text-gray-600">
+                        Admin login is not configured. Supabase environment variables are missing.
+                    </p>
+                    <Link
+                        href="/"
+                        className="inline-block text-primary hover:underline font-medium"
+                    >
+                        Return home
+                    </Link>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">

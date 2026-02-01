@@ -1,87 +1,102 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Sunset } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import SunsetTime from "@/components/SunsetTime";
 
 export default function Hero() {
-    return (
-        <section className="relative min-h-screen h-[100svh] w-full flex items-center justify-center overflow-hidden" role="banner" aria-label="Welcome to El Meson de Pepe">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src="/images/key-west-cuban-food.webp"
-                    alt="Authentic Cuban Food at El Meson de Pepe"
-                    fill
-                    className="object-cover"
-                    priority
-                    quality={80}
-                    sizes="100vw"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                />
-                {/* Overlay for readability */}
-                <div className="absolute inset-0 bg-black/50 bg-gradient-to-b from-black/70 via-black/20 to-black/80" aria-hidden="true" />
-            </div>
+  const { t } = useLanguage();
+  return (
+    <section
+      className="relative min-h-screen h-[100svh] w-full flex items-center justify-center overflow-hidden"
+      aria-label={t.hero.bannerAria}
+    >
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/sunset-from-el-meson-2048x1087.png"
+          alt={t.hero.imgAlt}
+          fill
+          className="object-cover brightness-[1.08] saturate-[1.05]"
+          priority
+          quality={90}
+          sizes="100vw"
+        />
+        {/* Lighter overlay so the sunset shows through; warm-tinted dark */}
+        <div
+          className="absolute inset-0 bg-[#1c1b19]/50"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-[#151310]/85 via-[#1a1814]/20 to-[#151310]/40"
+          aria-hidden="true"
+        />
+        {/* Subtle warm glow along bottom for depth */}
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-[var(--gold)]/5 via-transparent to-transparent pointer-events-none"
+          aria-hidden="true"
+        />
+      </div>
 
-            {/* Ambient glow behind oval */}
-            <div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[4]"
-                style={{
-                    width: 'min(100vw, 900px)',
-                    height: 'min(70vh, 600px)',
-                    borderRadius: '50%',
-                    background: 'radial-gradient(ellipse, rgba(217, 93, 30, 0.15) 0%, transparent 70%)',
-                }}
-                aria-hidden="true"
-            />
+      <div className="relative z-10 text-center px-6 sm:px-8 max-w-4xl mx-auto space-y-6 sm:space-y-8">
+        <h1 className="hero-reveal hero-reveal-delay-1 text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] text-[var(--warm-100)] font-serif font-light tracking-[0.02em] leading-snug max-w-3xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+          {t.hero.title}
+        </h1>
 
-            {/* Oval Overlay behind text */}
-            <div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[5] bg-black/60 backdrop-blur-[2px]"
-                style={{
-                    width: 'min(90vw, 800px)',
-                    height: 'min(60vh, 500px)',
-                    borderRadius: '50%',
-                    boxShadow: '0 0 80px 20px rgba(0, 0, 0, 0.3)',
-                }}
-                aria-hidden="true"
-            />
+        <p className="hero-reveal hero-reveal-delay-2 font-serif text-[var(--gold)] text-xl sm:text-2xl md:text-3xl lg:text-4xl italic tracking-tight drop-shadow-[0_1px_4px_rgba(0,0,0,0.25)]">
+          {t.hero.tagline}
+        </p>
 
-            {/* Content */}
-            <div className="relative z-10 text-center px-6 sm:px-4 max-w-4xl mx-auto space-y-4 sm:space-y-6">
-                {/* Script tagline for brand warmth */}
-                <span className="font-script text-primary text-2xl sm:text-3xl md:text-4xl drop-shadow-lg block">
-                    Authentic Cuban Heritage
-                </span>
-                
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-serif drop-shadow-lg leading-tight">
-                    Where Key West<br className="hidden sm:block" /> Meets Old Havana
-                </h1>
+        <div className="hero-reveal hero-reveal-delay-3 flex flex-col items-center gap-4">
+          <div className="h-px w-16 bg-[var(--gold)]" aria-hidden="true" />
+          <p className="text-[var(--warm-200)]/95 text-sm sm:text-base uppercase tracking-[0.2em]">
+            {t.hero.subtitle}
+          </p>
+          <p className="text-[var(--warm-300)]/90 text-sm sm:text-base font-light">
+            {t.hero.hours}
+          </p>
+          <div className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--charcoal)]/40 border border-[var(--gold)]/40 backdrop-blur-sm">
+            <Sunset className="w-5 h-5 text-[var(--gold)] shrink-0" aria-hidden="true" />
+            <span className="text-[var(--warm-200)] text-sm sm:text-base font-medium">
+              {t.hero.sunsetTonight}{" "}
+              <span className="text-[var(--gold)] font-semibold">
+                <SunsetTime />
+              </span>
+            </span>
+          </div>
+          <p className="text-[var(--gold)] text-base sm:text-lg font-medium italic">
+            {t.hero.joinTheFun}
+          </p>
+        </div>
 
-                <p className="text-white/80 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-light">
-                    Family owned since 1985 in the heart of Mallory Square
-                </p>
+        <div className="hero-reveal hero-reveal-delay-4 pt-4 sm:pt-6 flex flex-wrap gap-4 justify-center">
+          <Link
+            href="/story"
+            className="btn-hero focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-transparent"
+            aria-label={t.hero.ctaAria}
+          >
+            {t.hero.cta}
+          </Link>
+          <Link
+            href="/priority-seating"
+            className="btn-primary btn-waitlist inline-flex focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-transparent"
+            aria-label={t.hero.waitlistCtaAria}
+          >
+            {t.hero.waitlistCta}
+          </Link>
+        </div>
+      </div>
 
-                <div className="pt-6 sm:pt-8">
-                    <Link
-                        href="/menu"
-                        className="group relative inline-flex items-center justify-center bg-white/95 text-secondary font-semibold py-3 sm:py-4 px-8 sm:px-12 min-h-[48px] transition-all duration-500 uppercase tracking-wider text-sm sm:text-base overflow-hidden focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black/50"
-                        aria-label="Explore our menu"
-                    >
-                        <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
-                            Explore Our Menu
-                        </span>
-                        <span 
-                            className="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" 
-                            aria-hidden="true"
-                        />
-                    </Link>
-                </div>
-            </div>
-
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-8 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce" aria-label="Scroll down for more content">
-                <ArrowDown className="text-white/70 w-8 h-8 sm:w-10 sm:h-10 drop-shadow-lg" aria-hidden="true" />
-            </div>
-        </section>
-    );
+      <div
+        className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 z-10"
+        aria-hidden="true"
+      >
+        <ArrowDown
+          className="text-[var(--gold)]/70 w-7 h-7 sm:w-8 sm:h-8 animate-bounce"
+          strokeWidth={1.5}
+        />
+      </div>
+    </section>
+  );
 }

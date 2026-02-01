@@ -31,8 +31,8 @@ export default function HistoryPage() {
         <>
             <BreadcrumbSchema items={[
                 { name: "Home", url: "/" },
-                { name: "Our Story", url: "/story" },
-                { name: "History of Key West and Cuba", url: "/story/history" },
+                { name: "The Archive", url: "/story" },
+                { name: "Key West & Cuba", url: "/story/history" },
             ]} />
             <div className="bg-white min-h-screen">
                 {/* Hero Section */}
@@ -85,6 +85,43 @@ export default function HistoryPage() {
                             <p className="text-lg leading-relaxed">
                                 With the birth of pungent garlic onions, Spanish settlers also used other mouth-watering spices from the kitchen of El Meson de Pepe, a small family owned and operated restaurant, sitting on Key West's bustle and relative since 1984.
                             </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* José Martí */}
+                <section className="py-20 px-4 bg-[var(--warm-100)] border-t border-[var(--border)]">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+                            <div className="md:col-span-5">
+                                <div className="relative aspect-[4/5] max-w-sm mx-auto overflow-hidden border border-[var(--border)]">
+                                    <Image
+                                        src="/images/jose-marti-portrait.png"
+                                        alt="José Martí — Key West and Cuban independence"
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 768px) 100vw, 42vw"
+                                        quality={88}
+                                    />
+                                </div>
+                            </div>
+                            <div className="md:col-span-7">
+                                <p className="text-xs uppercase tracking-[0.2em] text-[var(--gold)] mb-1">
+                                    Poet, Revolutionary
+                                </p>
+                                <h2 className="text-2xl md:text-3xl font-serif font-light text-[var(--charcoal)] mb-1">
+                                    José Martí
+                                </h2>
+                                <p className="text-sm text-[var(--warm-700)] mb-6">
+                                    1853–1895
+                                </p>
+                                <blockquote className="font-serif text-lg md:text-xl text-[var(--charcoal)] italic mb-6 border-l-2 border-[var(--gold)] pl-5 py-1">
+                                    &ldquo;Key West became a cradle of Cuban liberty.&rdquo;
+                                </blockquote>
+                                <p className="text-[var(--warm-700)] text-base md:text-lg leading-relaxed font-light">
+                                    His words and his cause found refuge in Cayo Hueso. The San Carlos Institute, founded by Cuban exiles in 1871, welcomed him; the island sustained the independence movement. The bond between Key West and Cuba—cultural, political, culinary—remains inseparable.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </section>

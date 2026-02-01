@@ -55,6 +55,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/parties/survey`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/sunset`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
@@ -62,6 +68,48 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/contact`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/contact-form`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/priority-seating`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/careers`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/birthday`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/featured`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/about/jose-m-diaz`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/heritage`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.7,

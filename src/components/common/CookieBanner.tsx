@@ -28,7 +28,8 @@ export default function CookieBanner() {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-sm text-white px-4 py-4 sm:py-5 shadow-lg"
+      suppressHydrationWarning
+      className="no-print fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-sm text-white px-4 py-4 sm:py-5 shadow-lg"
       role="dialog"
       aria-labelledby="cookie-banner-title"
       aria-describedby="cookie-banner-description"

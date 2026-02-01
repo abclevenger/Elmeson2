@@ -7,25 +7,26 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Facebook, Instagram, ChevronDown, Settings, Users, Link as LinkIcon, LogOut, FileText } from "lucide-react";
 import { createClient } from "@/lib/supabase-browser";
 import { useRouter } from "next/navigation";
-import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Database } from "@/lib/database.types";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "@/components/common/LanguageToggle";
 
 const NAV_ITEMS = [
-    { name: "Home", href: "/" },
-    { name: "Menu", href: "/menu" },
+    { key: "home", href: "/" },
+    { key: "menu", href: "/menu" },
     {
-        name: "Our Story",
+        key: "ourStory",
         href: "/story",
         dropdown: [
-            { name: "Restaurant", href: "/story" },
-            { name: "History of Key West and Cuba", href: "/story/history" },
-            { name: "Pepe's Key West Blog", href: "/story/blog" },
-        ]
+            { key: "restaurant", href: "/story" },
+            { key: "historyKeyWestCuba", href: "/story/history" },
+            { key: "blog", href: "/story/blog" },
+        ],
     },
-    { name: "Private Parties", href: "/parties" },
-    { name: "Sunset Celebration", href: "/sunset" },
-    { name: "Patio Bar", href: "/patio" },
-    { name: "Contact Us", href: "/contact" },
+    { key: "parties", href: "/parties" },
+    { key: "sunset", href: "/sunset" },
+    { key: "patio", href: "/patio" },
+    { key: "contact", href: "/contact" },
+    { key: "waitlist", href: "/priority-seating" },
 ];
 
 export default function Navbar() {
@@ -36,14 +37,8 @@ export default function Navbar() {
     const [userEmail, setUserEmail] = useState<string | null>(null);
     const pathname = usePathname();
     const router = useRouter();
-    
-    // Only create Supabase client if environment variables are available
-    let supabase: SupabaseClient<Database> | null = null;
-    try {
-        supabase = createClient();
-    } catch (error) {
-        console.error('Failed to initialize Supabase client:', error);
-    }
+    const { t } = useLanguage();
+    const supabase = createClient();
     
     // Check if user is admin
     useEffect(() => {
@@ -115,11 +110,11 @@ export default function Navbar() {
     const mobileMenuRef = useRef<HTMLDivElement>(null);
     const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-    const handleMouseEnter = (itemName: string) => {
+    const handleMouseEnter = (itemKey: string) => {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
         }
-        setDropdownOpen(itemName);
+        setDropdownOpen(itemKey);
     };
 
     const handleMouseLeave = () => {
@@ -129,14 +124,14 @@ export default function Navbar() {
     };
 
     // Keyboard navigation for desktop dropdowns
-    const handleDropdownKeyDown = (e: React.KeyboardEvent, itemName: string, item: typeof NAV_ITEMS[0]) => {
+    const handleDropdownKeyDown = (e: React.KeyboardEvent, itemKey: string, item: (typeof NAV_ITEMS)[0]) => {
         if (!item.dropdown) return;
 
         switch (e.key) {
             case "Enter":
             case " ":
                 e.preventDefault();
-                setDropdownOpen(dropdownOpen === itemName ? null : itemName);
+                setDropdownOpen(dropdownOpen === itemKey ? null : itemKey);
                 break;
             case "Escape":
                 e.preventDefault();
@@ -145,10 +140,10 @@ export default function Navbar() {
                 break;
             case "ArrowDown":
                 e.preventDefault();
-                if (dropdownOpen !== itemName) {
-                    setDropdownOpen(itemName);
+                if (dropdownOpen !== itemKey) {
+                    setDropdownOpen(itemKey);
                 } else {
-                    const firstLink = dropdownRefs.current[itemName]?.querySelector("a") as HTMLElement;
+                    const firstLink = dropdownRefs.current[itemKey]?.querySelector("a") as HTMLElement;
                     firstLink?.focus();
                 }
                 break;
@@ -156,8 +151,8 @@ export default function Navbar() {
     };
 
     // Keyboard navigation within dropdown menu
-    const handleDropdownMenuKeyDown = (e: React.KeyboardEvent, itemName: string, index: number) => {
-        const dropdown = NAV_ITEMS.find(item => item.name === itemName)?.dropdown;
+    const handleDropdownMenuKeyDown = (e: React.KeyboardEvent, itemKey: string, index: number) => {
+        const dropdown = NAV_ITEMS.find((i) => i.key === itemKey)?.dropdown;
         if (!dropdown) return;
 
         switch (e.key) {
@@ -170,23 +165,23 @@ export default function Navbar() {
             case "ArrowDown":
                 e.preventDefault();
                 const nextIndex = index < dropdown.length - 1 ? index + 1 : 0;
-                const nextLink = dropdownRefs.current[itemName]?.children[nextIndex]?.querySelector("a") as HTMLElement;
+                const nextLink = dropdownRefs.current[itemKey]?.children[nextIndex]?.querySelector("a") as HTMLElement;
                 nextLink?.focus();
                 break;
             case "ArrowUp":
                 e.preventDefault();
                 const prevIndex = index > 0 ? index - 1 : dropdown.length - 1;
-                const prevLink = dropdownRefs.current[itemName]?.children[prevIndex]?.querySelector("a") as HTMLElement;
+                const prevLink = dropdownRefs.current[itemKey]?.children[prevIndex]?.querySelector("a") as HTMLElement;
                 prevLink?.focus();
                 break;
             case "Home":
                 e.preventDefault();
-                const firstLink = dropdownRefs.current[itemName]?.children[0]?.querySelector("a") as HTMLElement;
+                const firstLink = dropdownRefs.current[itemKey]?.children[0]?.querySelector("a") as HTMLElement;
                 firstLink?.focus();
                 break;
             case "End":
                 e.preventDefault();
-                const lastLink = dropdownRefs.current[itemName]?.children[dropdown.length - 1]?.querySelector("a") as HTMLElement;
+                const lastLink = dropdownRefs.current[itemKey]?.children[dropdown.length - 1]?.querySelector("a") as HTMLElement;
                 lastLink?.focus();
                 break;
         }
@@ -329,6 +324,7 @@ export default function Navbar() {
     if (isAdmin) {
         return (
             <nav 
+                suppressHydrationWarning
                 className="fixed top-0 w-full z-50 bg-white border-b border-gray-200 shadow-sm"
                 role="navigation" 
                 aria-label="Admin navigation"
@@ -475,10 +471,11 @@ export default function Navbar() {
     // Regular navbar for non-admin users
     return (
         <nav 
+            suppressHydrationWarning
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${
                 isTransparent 
-                    ? "bg-black/50 backdrop-blur-md border-transparent" 
-                    : "bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm"
+                    ? "bg-[var(--charcoal)]/60 backdrop-blur-md border-transparent" 
+                    : "bg-[var(--warm-100)]/95 backdrop-blur-md border-b border-[var(--border)] shadow-sm"
             }`} 
             role="navigation" 
             aria-label="Main navigation"
@@ -506,9 +503,9 @@ export default function Navbar() {
                         <div className="ml-10 flex items-baseline space-x-4 xl:space-x-5 flex-nowrap">
                             {NAV_ITEMS.map((item) => (
                                 <div
-                                    key={item.name}
+                                    key={item.key}
                                     className="relative"
-                                    onMouseEnter={() => item.dropdown && handleMouseEnter(item.name)}
+                                    onMouseEnter={() => item.dropdown && handleMouseEnter(item.key)}
                                     onMouseLeave={handleMouseLeave}
                                 >
                                     {item.dropdown ? (
@@ -516,47 +513,54 @@ export default function Navbar() {
                                             <button
                                                 className={`transition-all duration-300 px-2 py-2 rounded-md text-xs font-medium uppercase tracking-wide flex items-center space-x-1 min-h-[44px] whitespace-nowrap ${
                                                     isTransparent 
-                                                        ? "text-white hover:text-gray-200" 
-                                                        : "text-gray-700 hover:text-primary"
+                                                        ? "text-[var(--warm-100)] hover:text-[var(--warm-300)]" 
+                                                        : "text-[var(--charcoal)] hover:text-[var(--gold)]"
                                                 }`}
-                                                style={isTransparent ? { color: 'white' } : undefined}
-                                                aria-expanded={dropdownOpen === item.name}
+                                                style={isTransparent ? { color: 'var(--warm-100)' } : { color: 'var(--charcoal)' }}
+                                                aria-expanded={dropdownOpen === item.key}
                                                 aria-haspopup="true"
-                                                onKeyDown={(e) => handleDropdownKeyDown(e, item.name, item)}
+                                                onKeyDown={(e) => handleDropdownKeyDown(e, item.key, item)}
                                             >
-                                                <span className={`text-xs font-medium`} style={isTransparent ? { color: 'white' } : undefined}>{item.name}</span>
+                                                <span className={`text-xs font-medium`} style={isTransparent ? { color: 'var(--warm-100)' } : { color: 'var(--charcoal)' }}>{t.nav[item.key as keyof typeof t.nav]}</span>
                                                 <ChevronDown 
                                                     size={16} 
                                                     className="transition-colors duration-300"
-                                                    style={isTransparent ? { color: 'white' } : { color: '#4B5563' }}
+                                                    style={isTransparent ? { color: 'var(--warm-100)' } : { color: 'var(--charcoal)' }}
                                                     strokeWidth={2}
                                                     aria-hidden="true" 
                                                 />
                                             </button>
-                                            {dropdownOpen === item.name && (
+                                            {dropdownOpen === item.key && (
                                                 <div className="absolute left-0 top-full pt-2">
                                                     <div
                                                         ref={(el) => {
-                                                            dropdownRefs.current[item.name] = el;
+                                                            dropdownRefs.current[item.key] = el;
                                                         }}
-                                                        className="w-64 bg-white border border-gray-200 rounded-lg shadow-lg py-2"
+                                                        className="w-64 bg-[var(--warm-100)] border border-[var(--border)] rounded-lg shadow-lg py-2"
                                                         role="menu"
                                                     >
                                                         {item.dropdown.map((subItem, index) => (
                                                             <Link
-                                                                key={subItem.name}
+                                                                key={subItem.key}
                                                                 href={subItem.href}
                                                                 role="menuitem"
-                                                                className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors min-h-[44px] flex items-center"
-                                                                onKeyDown={(e) => handleDropdownMenuKeyDown(e, item.name, index)}
+                                                                className="block px-4 py-3 text-sm text-[var(--charcoal)] hover:bg-[var(--warm-100)] hover:text-[var(--gold)] transition-colors min-h-[44px] flex items-center"
+                                                                onKeyDown={(e) => handleDropdownMenuKeyDown(e, item.key, index)}
                                                             >
-                                                                {subItem.name}
+                                                                {t.nav[subItem.key as keyof typeof t.nav]}
                                                             </Link>
                                                         ))}
                                                     </div>
                                                 </div>
                                             )}
                                         </>
+                                    ) : item.key === "waitlist" ? (
+                                        <Link
+                                            href={item.href}
+                                            className="ml-2 px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider min-h-[44px] flex items-center whitespace-nowrap bg-[var(--gold)] text-[var(--charcoal)] hover:bg-black hover:text-[var(--gold)] shadow-md border border-[var(--gold)]/80 hover:border-black transition-all duration-300"
+                                        >
+                                            {t.nav[item.key as keyof typeof t.nav]}
+                                        </Link>
                                     ) : (
                                         <Link
                                             href={item.href}
@@ -565,9 +569,9 @@ export default function Navbar() {
                                                     ? "hover:text-gray-200" 
                                                     : "hover:text-primary"
                                             }`}
-                                            style={isTransparent ? { color: 'white' } : { color: '#374151' }}
+                                            style={isTransparent ? { color: 'var(--warm-100)' } : { color: 'var(--charcoal)' }}
                                         >
-                                            {item.name}
+                                            {t.nav[item.key as keyof typeof t.nav]}
                                         </Link>
                                     )}
                                 </div>
@@ -575,18 +579,19 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    {/* Social Icons (Desktop) */}
+                    {/* Language toggle + Social Icons (Desktop) */}
                     <div className="hidden lg:flex items-center space-x-3">
+                        <LanguageToggle transparent={isTransparent} />
                         <Link 
                             href="https://www.facebook.com/ElMesonKeyWest/" 
                             target="_blank" 
                             rel="noopener noreferrer" 
                             className={`transition-all duration-300 p-2 min-h-[48px] min-w-[48px] flex items-center justify-center rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                                 isTransparent 
-                                    ? "hover:text-gray-200 hover:bg-white/10" 
-                                    : "hover:text-primary hover:bg-gray-100"
+                                    ? "hover:text-[var(--warm-300)] hover:bg-white/10" 
+                                    : "hover:text-[var(--gold)] hover:bg-[var(--warm-200)]"
                             }`}
-                            style={isTransparent ? { color: 'white' } : { color: '#374151' }}
+                            style={isTransparent ? { color: 'var(--warm-100)' } : { color: 'var(--charcoal)' }}
                             aria-label="Visit us on Facebook"
                         >
                             <Facebook size={24} strokeWidth={1.5} aria-hidden="true" />
@@ -597,10 +602,10 @@ export default function Navbar() {
                             rel="noopener noreferrer" 
                             className={`transition-all duration-300 p-2 min-h-[48px] min-w-[48px] flex items-center justify-center rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                                 isTransparent 
-                                    ? "hover:text-gray-200 hover:bg-white/10" 
-                                    : "hover:text-primary hover:bg-gray-100"
+                                    ? "hover:text-[var(--warm-300)] hover:bg-white/10" 
+                                    : "hover:text-[var(--gold)] hover:bg-[var(--warm-200)]"
                             }`}
-                            style={isTransparent ? { color: 'white' } : { color: '#374151' }}
+                            style={isTransparent ? { color: 'var(--warm-100)' } : { color: 'var(--charcoal)' }}
                             aria-label="Visit us on Instagram"
                         >
                             <Instagram size={24} strokeWidth={1.5} aria-hidden="true" />
@@ -614,10 +619,10 @@ export default function Navbar() {
                             onClick={() => setIsOpen(!isOpen)}
                             className={`transition-all duration-300 p-3 rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center ${
                                 isTransparent 
-                                    ? "hover:text-gray-200" 
-                                    : "hover:text-primary"
+                                    ? "hover:text-[var(--warm-300)]" 
+                                    : "hover:text-[var(--gold)]"
                             }`}
-                            style={isTransparent ? { color: 'white' } : { color: '#374151' }}
+                            style={isTransparent ? { color: 'var(--warm-100)' } : { color: 'var(--charcoal)' }}
                             aria-label={isOpen ? "Close menu" : "Open menu"}
                             aria-expanded={isOpen}
                             aria-controls="mobile-menu"
@@ -637,38 +642,38 @@ export default function Navbar() {
                 <div
                     id="mobile-menu"
                     ref={mobileMenuRef}
-                    className="lg:hidden bg-white border-b border-gray-200 h-[calc(100vh-80px)] overflow-y-auto"
+                    className="lg:hidden bg-[var(--warm-100)] border-b border-[var(--border)] h-[calc(100vh-80px)] overflow-y-auto"
                     role="dialog"
                     aria-modal="true"
                     aria-label="Main navigation menu"
                 >
                     <div className="px-4 pt-4 pb-6 space-y-2">
                         {NAV_ITEMS.map((item) => (
-                            <div key={item.name} className="border-b border-gray-100 last:border-0 pb-2 last:pb-0">
+                            <div key={item.key} className="border-b border-[var(--border)] last:border-0 pb-2 last:pb-0">
                                 {item.dropdown ? (
                                     <>
                                         <button
-                                            onClick={() => setDropdownOpen(dropdownOpen === item.name ? null : item.name)}
+                                            onClick={() => setDropdownOpen(dropdownOpen === item.key ? null : item.key)}
                                             onKeyDown={(e) => {
                                                 if (e.key === "Escape") {
                                                     setDropdownOpen(null);
                                                 }
                                             }}
-                                            className="text-gray-800 hover:text-primary w-full text-left px-4 py-4 rounded-md text-lg font-medium flex items-center justify-between min-h-[50px] active:bg-gray-50"
-                                            aria-expanded={dropdownOpen === item.name}
+                                            className="text-[var(--charcoal)] hover:text-[var(--gold)] w-full text-left px-4 py-4 rounded-md text-lg font-medium flex items-center justify-between min-h-[50px] active:bg-[var(--warm-200)]"
+                                            aria-expanded={dropdownOpen === item.key}
                                             aria-haspopup="true"
                                         >
-                                            <span>{item.name}</span>
-                                            <ChevronDown size={20} className={`transition-transform duration-200 ${dropdownOpen === item.name ? 'rotate-180' : ''}`} aria-hidden="true" />
+                                            <span>{t.nav[item.key as keyof typeof t.nav]}</span>
+                                            <ChevronDown size={20} className={`transition-transform duration-200 ${dropdownOpen === item.key ? 'rotate-180' : ''}`} aria-hidden="true" />
                                         </button>
-                                        {dropdownOpen === item.name && (
-                                            <div className="pl-6 space-y-1 bg-gray-50/50 rounded-lg mb-2" role="menu">
+                                        {dropdownOpen === item.key && (
+                                            <div className="pl-6 space-y-1 bg-[var(--warm-100)]/80 rounded-lg mb-2" role="menu">
                                                 {item.dropdown.map((subItem) => (
                                                     <Link
-                                                        key={subItem.name}
+                                                        key={subItem.key}
                                                         href={subItem.href}
                                                         role="menuitem"
-                                                        className="text-gray-600 hover:text-primary block px-4 py-3 rounded-md text-base min-h-[44px] flex items-center"
+                                                        className="text-[var(--warm-700)] hover:text-[var(--gold)] block px-4 py-3 rounded-md text-base min-h-[44px] flex items-center"
                                                         onClick={() => setIsOpen(false)}
                                                         onKeyDown={(e) => {
                                                             if (e.key === "Escape") {
@@ -676,28 +681,39 @@ export default function Navbar() {
                                                             }
                                                         }}
                                                     >
-                                                        {subItem.name}
+                                                        {t.nav[subItem.key as keyof typeof t.nav]}
                                                     </Link>
                                                 ))}
                                             </div>
                                         )}
                                     </>
+                                ) : item.key === "waitlist" ? (
+                                    <Link
+                                        href={item.href}
+                                        className="mt-3 block w-full text-center px-4 py-4 rounded-lg text-base font-bold uppercase tracking-wider min-h-[50px] flex items-center justify-center bg-[var(--gold)] text-[var(--charcoal)] hover:bg-black hover:text-[var(--gold)] active:bg-black/90 shadow-md border border-[var(--gold)]/80 hover:border-black transition-all duration-300"
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        {t.nav[item.key as keyof typeof t.nav]}
+                                    </Link>
                                 ) : (
                                     <Link
                                         href={item.href}
-                                        className="text-gray-800 hover:text-primary block px-4 py-4 rounded-md text-lg font-medium min-h-[50px] flex items-center active:bg-gray-50"
+                                        className="text-[var(--charcoal)] hover:text-[var(--gold)] block px-4 py-4 rounded-md text-lg font-medium min-h-[50px] flex items-center active:bg-[var(--warm-200)]"
                                         onClick={() => setIsOpen(false)}
                                     >
-                                        {item.name}
+                                        {t.nav[item.key as keyof typeof t.nav]}
                                     </Link>
                                 )}
                             </div>
                         ))}
-                        <div className="flex justify-center space-x-8 pt-8 pb-8">
-                            <Link href="https://www.facebook.com/ElMesonKeyWest/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary p-3 bg-gray-100 rounded-full" aria-label="Visit us on Facebook">
+                        <div className="flex flex-col items-center gap-4 pt-6 pb-4">
+                            <LanguageToggle transparent={false} compact />
+                        </div>
+                        <div className="flex justify-center space-x-8 pt-4 pb-8">
+                            <Link href="https://www.facebook.com/ElMesonKeyWest/" target="_blank" rel="noopener noreferrer" className="text-[var(--warm-700)] hover:text-[var(--gold)] p-3 bg-[var(--warm-200)] rounded-full" aria-label="Visit us on Facebook">
                                 <Facebook size={28} aria-hidden="true" />
                             </Link>
-                            <Link href="https://www.instagram.com/elmesondepepe/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary p-3 bg-gray-100 rounded-full" aria-label="Visit us on Instagram">
+                            <Link href="https://www.instagram.com/elmesondepepe/" target="_blank" rel="noopener noreferrer" className="text-[var(--warm-700)] hover:text-[var(--gold)] p-3 bg-[var(--warm-200)] rounded-full" aria-label="Visit us on Instagram">
                                 <Instagram size={28} aria-hidden="true" />
                             </Link>
                         </div>
