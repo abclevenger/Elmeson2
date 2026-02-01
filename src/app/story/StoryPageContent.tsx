@@ -45,6 +45,24 @@ export default function StoryPageContent() {
             <em>{t.story.p3}</em>
           </p>
 
+          {/* 20 Year Anniversary Video */}
+          <section id="anniversary-video" className="mt-14 mb-14 scroll-mt-24" aria-labelledby="anniversary-video-heading">
+            <h2 id="anniversary-video-heading" className="text-2xl md:text-3xl font-serif font-light text-[var(--charcoal)] text-center mb-6">
+              {t.story.anniversaryVideo}
+            </h2>
+            <div className="relative w-full aspect-video max-w-3xl mx-auto rounded-lg overflow-hidden border border-[var(--border)] shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/f9p7vGM9sa0?si=pgUNkY0CgeO56Chj"
+                title={t.story.anniversaryVideo}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+                loading="lazy"
+              />
+            </div>
+          </section>
+
           <div className="mt-14 flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
             <Link href="/story/history" className="btn-primary inline-flex justify-center">
               {t.story.ctaHistory}

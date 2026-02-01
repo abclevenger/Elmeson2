@@ -48,30 +48,110 @@ const EXHIBIT_LABELS: ExhibitLabel[] = [
 ];
 
 const TIMELINE_ENTRIES: TimelineEntry[] = [
-  { id: "birth", year: "1941", label: "Born, Yaguajay, Cuba", detail: "Jose \"Pepe\" M. Diaz." },
+  {
+    id: "origins",
+    year: "1941",
+    label: "Origins",
+    detail:
+      "January 24, 1941: Pepe is born in Yaguajay, Cuba, the son of Sergio Díaz and Hortensia Marrero. He grows up with his sisters Sofía and Marta in a rural, close-knit community.",
+  },
+  {
+    id: "youth",
+    year: "Late 1950s",
+    label: "Youth and Political Involvement",
+    detail:
+      "As a teenager, Pepe joins the early uprisings against Batista, aligned with Camilo Cienfuegos.",
+  },
   {
     id: "imprisonment",
-    label: "Reported imprisonment",
+    year: "1959–1960s",
+    label: "Opposition and Labor Camps",
     detail:
-      "According to U.S. media reports: one year in a Cuban prison and four years in a labor camp for anti-Castro activity. Learned to cook while imprisoned, turning scarce staples into meals for fellow prisoners.",
+      "After the Cuban Revolution, Pepe becomes one of the early opponents of the new regime. He is sent to Cuban labor camps for about three years. While imprisoned, he begins cooking—preferable to forced agricultural labor—marking the start of his culinary path.",
   },
   {
-    id: "key-west",
+    id: "spain",
+    year: "Late 1960s–Early 1970s",
+    label: "Leaving Cuba via Spain",
+    detail:
+      "With no direct visas to the U.S., Pepe leaves Cuba through Spain. He works in Spanish restaurants and mesones, refining his skills. The idea is born: when he reaches the U.S., he will open his own Spanish-style \"Mesón.\"",
+  },
+  {
+    id: "miami",
     year: "1973",
-    label: "Key West",
-    detail: "The Díaz family arrived. Cuban Club, Tony's Grocery, the deli counter—roots of the table to come.",
+    label: "Arrival in Miami",
+    detail:
+      "Pepe arrives in Miami. He works at a well-known restaurant (\"La Esquina de Tejas\"), cooks for Ronald Reagan, meets Kachi (Tania), and they begin their family.",
   },
   {
-    id: "founding",
-    year: "Mid-1980s",
-    label: "El Mesón de Pepe",
-    detail: "Founded on Duval Street (sources cite 1984 or 1985). Later moved to Mallory Square, where it remains.",
+    id: "grocery-deli",
+    year: "Mid-1970s–1980s",
+    label: "From Grocery Store to Deli",
+    detail:
+      "The family opens a grocery store, living upstairs. Children help from a young age. The grocery evolves into a small deli, serving sandwiches through a take-out window.",
   },
   {
-    id: "passing",
-    year: "2023",
-    label: "Passed",
-    detail: "19 December, after a long battle with Parkinson's disease.",
+    id: "bolito",
+    year: "1980s",
+    label: "The Dish That Funded the Dream",
+    detail:
+      "Pepe creates \"el bolito\": yellow rice, black beans, ground beef, fried sweet plantain, and bread. This affordable, filling meal becomes a big seller and helps finance the future restaurant.",
+  },
+  {
+    id: "first-meson",
+    year: "1986",
+    label: "First El Mesón Opens",
+    detail:
+      "The family purchases Papa's Place and opens the first El Mesón at 1215 Duval Street, Key West (previously a laundromat). Entirely family-run: Pepe cooks, Kachi works the front, children help however needed.",
+  },
+  {
+    id: "fire",
+    year: "1987",
+    label: "Fire and Rebirth",
+    detail:
+      "The restaurant burns down on July 4th. The entire family works together to rebuild.",
+  },
+  {
+    id: "reopening",
+    year: "Late 1987",
+    label: "Reopening for Fantasy Fest",
+    detail:
+      "The restaurant reopens within the same year, just in time for Fantasy Fest. Pepe's persistence convinces a city inspector to grant permission to open. The community strongly supports them.",
+  },
+  {
+    id: "robleto",
+    year: "1994",
+    label: "Building a Long-Term Team",
+    detail:
+      "David Robleto (chef) and Laura Robleto (cook) join. The menu, quality, and family spirit remain the same. The transition from small family business to stable, professional operation.",
+  },
+  {
+    id: "mallory",
+    year: "1997",
+    label: "Major Expansion",
+    detail:
+      "The restaurant expands to Mallory Square, 410 Wall Street. More seating, larger space, stronger retail component.",
+  },
+  {
+    id: "big-pine",
+    year: "1998",
+    label: "Big Pine and Hurricane Georges",
+    detail:
+      "Pepe buys property in Big Pine Key. Hurricane Georges (1998) strikes shortly after.",
+  },
+  {
+    id: "twenty-years",
+    year: "2017",
+    label: "20 Years and Community Service",
+    detail:
+      "The family celebrates 20 years at the Wall Street location. After a major hurricane, the restaurant stays open, serving hundreds of free meals to the community. El Mesón de Pepe's role as a community anchor is reinforced.",
+  },
+  {
+    id: "present",
+    year: "Present",
+    label: "Legacy Continues",
+    detail:
+      "Pepe is partially retired, helping his daughter open a restaurant in Tampa. Many staff have been with the restaurant for decades. The lease with the city has been extended for another 10 years, securing the future.",
   },
 ];
 
@@ -136,23 +216,31 @@ export default function AboutPepeContent() {
             <div className="h-px w-14 bg-[var(--gold)] mb-8" />
             <div className="space-y-6 text-[var(--warm-700)] text-base md:text-lg leading-relaxed font-light">
               <p>
-                Jose &ldquo;Pepe&rdquo; M. Diaz was born 24 January 1941 in Yaguajay, Cuba.
-                According to U.S. media reports, he spent one year in a Cuban prison and four
-                years in a labor camp for anti-Castro activity. In confinement, he learned to
-                cook, turning scarce staples into meals for fellow prisoners. That act of care
-                foreshadowed a life of hospitality.
+                José &ldquo;Pepe&rdquo; M. Díaz was born in Yaguajay, Cuba. His early life was shaped by
+                rural community, work, and upheaval. After opposing the Cuban regime and
+                enduring years of forced labor, he left the island and learned his craft in
+                the mesones of Spain—where cooking was not only sustenance, but culture,
+                discipline, and refuge.
               </p>
               <p>
-                After arriving in Key West in 1973, the Díaz family became Conch: the Cuban
-                Club, Tony&apos;s Grocery, the deli counter where regulars came for Cuban coffee
-                and sandwiches. In the mid-1980s (sources differ between 1984 and 1985), El
-                Mesón de Pepe opened—first on Duval, later at Mallory Square—where it remains
-                a permanent site of Cuban American heritage.
+                In 1973, Pepe arrived in Miami and soon after made his way to Key West. The
+                Díaz family became Conch the way Conchs always have: by working, serving, and
+                staying. Through the Cuban Club, Tony&apos;s Grocery, and a modest deli counter
+                where regulars gathered for Cuban coffee and sandwiches, the foundation was
+                laid. Those years were not incidental. They were preparation.
               </p>
               <p>
-                Jose &ldquo;Pepe&rdquo; M. Diaz passed on 19 December 2023 after a long battle with Parkinson&apos;s
-                disease. The table he built continues to hold history: food as cultural
-                continuity, the restaurant as a living archive.
+                In 1986, El Mesón de Pepe opened on Duval Street—small, family-run, and built
+                on persistence. After a fire nearly ended it, the restaurant reopened the same
+                year through sheer tenacity and community support. In 1997, El Mesón moved to
+                Mallory Square, where it remains today: a permanent home for Cuban American
+                heritage in Key West.
+              </p>
+              <p>
+                For nearly four decades, the table has carried that purpose. Cuisine as
+                cultural expression. Music, mojitos, recipes passed hand to hand—not preserved
+                as nostalgia, but practiced as living tradition. We carry the weight of that
+                history deliberately. We do not reference it. We live it.
               </p>
             </div>
           </ScrollReveal>
@@ -183,7 +271,7 @@ export default function AboutPepeContent() {
               Timeline
             </p>
             <h2 className="text-2xl md:text-3xl font-serif font-light tracking-tight text-[var(--charcoal)]">
-              A Curated Chronology
+              Pepe → El Mesón de Pepe
             </h2>
             <div className="h-px w-14 bg-[var(--gold)] mt-4" />
           </ScrollReveal>
