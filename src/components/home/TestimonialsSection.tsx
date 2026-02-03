@@ -5,7 +5,7 @@ import ScrollReveal from "@/components/common/ScrollReveal";
 
 export default function TestimonialsSection() {
   const { t } = useLanguage();
-  const quotes = (t.testimonials as { quotes?: string[] })?.quotes ?? [
+  const quotes: readonly string[] = (t.testimonials as { quotes?: readonly string[] })?.quotes ?? [
     "Came for one mojito, stayed for the sunset and the band.",
     "Best spot in Mallory Square for drinks before dinner.",
     "The patio at sunset with live music—exactly what we wanted in Key West.",
