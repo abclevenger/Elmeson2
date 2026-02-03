@@ -16,7 +16,20 @@ export const metadata: Metadata = {
   alternates: { canonical: "/heritage" },
 };
 
-const PARTNERS = [
+type Partner = {
+  name: string;
+  role: string;
+  context: string;
+  bio: string;
+  href: string;
+  hrefExternal?: boolean;
+  image?: string;
+  imageAlt?: string;
+  objectFit?: string;
+  objectPosition?: string;
+};
+
+const PARTNERS: Partner[] = [
   {
     name: "Jose \"Pepe\" M. Diaz",
     role: "Original Founder",

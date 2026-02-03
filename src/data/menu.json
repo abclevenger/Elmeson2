@@ -11,7 +11,8 @@
       },
       {
         "name": "Alitas de Pollo (Chicken Wings)",
-        "description": "Marinated fried chicken wings in garlic mojo sauce"
+        "description": "Marinated fried chicken wings in garlic mojo sauce",
+        "favorite": true
       },
       {
         "name": "Calamares Empanizados con Salsa de Sofrito (Breaded Calamari with Creole Sauce)",
@@ -50,7 +51,8 @@
       },
       {
         "name": "Antojitos (Cuban Snacks)",
-        "description": "Fried cheese and chorizo over a bed of plantain chips"
+        "description": "Fried cheese and chorizo over a bed of plantain chips",
+        "favorite": true
       },
       {
         "name": "Tostones Rellenos (Stuffed Plantains)",
@@ -143,7 +145,8 @@
     "Featured": [
       {
         "name": "Cayo Hueso Cuban Mix",
-        "description": "Key West's version of the traditional Cuban Sandwich, served with all the trimmings: sugar glazed ham, roast pork, Swiss cheese, pickles, lettuce, mustard, tomatoes & mayonnaise on crispy pressed Cuban bread"
+        "description": "Award-winning international Cuban Sandwich—Key West's version served with sugar glazed ham, roast pork, Swiss cheese, pickles, lettuce, mustard, tomatoes & mayonnaise on crispy pressed Cuban bread",
+        "awardWinning": true
       },
       {
         "name": "Pan con Bistec (Steak Sandwich)",
@@ -281,27 +284,27 @@
     "note": "*Please ask our server about the flavor of the week",
     "items": [
       {
-        "name": "Pudin de Guava",
+        "name": "Pudin de Guava (Guava Bread Pudding)",
         "description": "Guava Bread Pudding"
       },
       {
-        "name": "Flan Casero",
+        "name": "Flan Casero (Homemade Caramel Custard)",
         "description": "Caramel Custard"
       },
       {
-        "name": "Torta de Limon",
+        "name": "Torta de Limon (Key Lime Pie)",
         "description": "Homemade Key Lime Pie"
       },
       {
-        "name": "Pastel de Chocolate",
+        "name": "Pastel de Chocolate (Chocolate Cake)",
         "description": "Chocolate Thunder Cake"
       },
       {
-        "name": "Tres Leches",
+        "name": "Tres Leches (Three Milk Cake)",
         "description": "A Three Milk Cake Sensation"
       },
       {
-        "name": "Flan de Coco",
+        "name": "Flan de Coco (Coconut Flan)",
         "description": "Coconut Flan"
       }
     ]
