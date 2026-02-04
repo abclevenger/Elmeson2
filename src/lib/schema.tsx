@@ -241,3 +241,19 @@ export function ArticleSchema({
   return <JsonLd schema={schema} />;
 }
 
+// FAQPage Schema for LLM/snippet visibility
+export function FAQSchema({ items }: { items: Array<{ q: string; a: string }> }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  };
+  return <JsonLd schema={schema} />;
+}

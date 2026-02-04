@@ -30,6 +30,16 @@ export default function InfoSection() {
               {t.info.p2}
             </p>
 
+            <p className="text-[var(--warm-700)] text-base font-light max-w-xl">
+              <Link href="/menu" className="text-[var(--charcoal)] hover:text-[var(--gold)] underline underline-offset-2 font-medium focus:outline-none focus:ring-2 focus:ring-[var(--gold)] rounded">{t.info.linkMenu}</Link>
+              {", "}
+              <Link href="/priority-seating" className="text-[var(--charcoal)] hover:text-[var(--gold)] underline underline-offset-2 font-medium focus:outline-none focus:ring-2 focus:ring-[var(--gold)] rounded">{t.info.linkWaitlist}</Link>
+              {", or "}
+              <a href="tel:+13052952620" className="text-[var(--charcoal)] hover:text-[var(--gold)] underline underline-offset-2 font-medium focus:outline-none focus:ring-2 focus:ring-[var(--gold)] rounded">{t.info.linkCall}</a>
+              {". "}
+              <Link href="/story" className="text-[var(--charcoal)] hover:text-[var(--gold)] underline underline-offset-2 font-medium focus:outline-none focus:ring-2 focus:ring-[var(--gold)] rounded">{t.info.linkStory}</Link>
+            </p>
+
             <div className="pt-2">
               <Link
                 href="/story"

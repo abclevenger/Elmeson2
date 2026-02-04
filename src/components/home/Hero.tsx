@@ -74,29 +74,45 @@ export default function Hero() {
         </div>
 
         <div className="hero-reveal hero-reveal-delay-4 pt-4 sm:pt-6 flex flex-col items-center gap-4">
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center items-center">
             <Link
-              href="/story"
-              className="btn-hero focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-transparent"
-              aria-label={t.hero.ctaAria}
+              href="/menu"
+              className="btn-primary inline-flex min-h-[44px] items-center justify-center focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-transparent"
+              aria-label={t.hero.ctaMenuAria}
             >
-              {t.hero.cta}
+              {t.hero.ctaMenu}
             </Link>
+            <a
+              href="tel:+13052952620"
+              className="btn-hero min-h-[44px] inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-transparent"
+              aria-label={t.hero.ctaCallAria}
+            >
+              {t.hero.ctaCall}
+            </a>
             <Link
               href="/priority-seating"
-              className="btn-primary btn-waitlist inline-flex focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-transparent"
+              className="btn-primary btn-waitlist inline-flex min-h-[44px] items-center justify-center focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-transparent"
               aria-label={t.hero.waitlistCtaAria}
             >
               {t.hero.waitlistCta}
             </Link>
           </div>
-          <Link
-            href="/story#anniversary-video"
-            className="text-[var(--warm-200)] text-sm hover:text-[var(--gold)] transition-colors underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-transparent rounded"
-            aria-label={t.hero.watchVideoAria}
-          >
-            {t.hero.watchVideo}
-          </Link>
+          <div className="flex flex-wrap gap-x-6 gap-y-1 justify-center">
+            <Link
+              href="/story"
+              className="text-[var(--warm-200)] text-sm hover:text-[var(--gold)] transition-colors underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-transparent rounded"
+              aria-label={t.hero.ctaAria}
+            >
+              {t.hero.cta}
+            </Link>
+            <Link
+              href="/story#anniversary-video"
+              className="text-[var(--warm-200)] text-sm hover:text-[var(--gold)] transition-colors underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-transparent rounded"
+              aria-label={t.hero.watchVideoAria}
+            >
+              {t.hero.watchVideo}
+            </Link>
+          </div>
         </div>
       </div>
 
